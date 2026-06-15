@@ -61,8 +61,4 @@ If you're new to databases, follow this suggested roadmap to build your knowledg
     - Backup, recovery, and security
     - Distributed databases and data warehousing[reference:3]
 
-## 🚀 How to Use This Repository
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/Mahin01234/Database-Management-System.git
