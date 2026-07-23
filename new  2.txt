@@ -1,0 +1,85 @@
+12. find all department that do not have any sudent 
+Ans: 
+select department_name 
+from departments
+left join students 
+on departments.department_id = students.department_id 
+where
+students.student_id is null ; 
+
+
+
+13. show all departments along with their course , including departments that have no courses. 
+Ans:
+select department_name , course_name 
+from 
+departments
+left join courses 
+on departments.department_id = course.department_id ;  
+
+
+14. find all departments that do not offer any course. 
+Ans: 
+select course_name , department_name 
+from 
+departments 
+left join courses 
+on
+departments.department_id = courses.department_id 
+where
+courses.course_id is null ; 
+
+### same question ( only coures)
+Ans: 
+select department_name 
+from 
+departments 
+left join courses 
+on
+departments.department_id = courses.department_id 
+where
+courses.course_id is null ; 
+
+
+
+15. show all departments along with their students, including departments that hane no students. 
+Ans: 
+select student_name , department_name 
+from 
+students
+right join departments 
+on
+students.department_id = departments.department_id ; 
+
+
+16. show all departments along with their courses including departments that have no courses. 
+Ans: 
+select course_name , department_name 
+FROM courses 
+right JOIN departments on courses.department_id = departments.department_id ; 
+
+
+17. find all deparments that do not have any students. 
+Ans: 
+SELECT student_name , department_name 
+from students 
+right join departments on students.department_id = departments.department_id ; 
+
+
+18. find all departments that do not offer any courese. 
+Ans: 
+select course_name , department_name 
+from 
+courses 
+right join courses 
+on
+courses.department_id = departments.department_id 
+where
+courses.course_id is null ; 
+
+
+
+19. show the location of every department along with its students including that have no students
+Ans: 
+
+20. show every department along with the total number of courses.It offers including departments with no courses ( right join ) 
