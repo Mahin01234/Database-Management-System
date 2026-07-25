@@ -4,7 +4,7 @@ Microsoft Windows [Version 10.0.26100.8655]
 C:\Users\DELL>mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 8
+Your MySQL connection id is 10
 Server version: 8.0.44 MySQL Community Server - GPL
 
 Copyright (c) 2000, 2025, Oracle and/or its affiliates.
@@ -15,11 +15,7 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-
-
-
-
-mysql> SHOW DATABASES;
+mysql> show databases ;
 +---------------------+
 | Database            |
 +---------------------+
@@ -31,106 +27,475 @@ mysql> SHOW DATABASES;
 | temp1               |
 | tempdb              |
 +---------------------+
-7 rows in set (0.02 sec)
+7 rows in set (0.00 sec)
 
+mysql> create database BD ;
+Query OK, 1 row affected (0.00 sec)
 
+mysql> show databases ;
++---------------------+
+| Database            |
++---------------------+
+| bd                  |
+| information_schema  |
+| mysql               |
+| performance_schema  |
+| person_verification |
+| sys                 |
+| temp1               |
+| tempdb              |
++---------------------+
+8 rows in set (0.00 sec)
 
+mysql> use BD ;
+Database changed
+mysql> create table people (
+    -> CustomerID INT NOT NULL PRIMARY KEY ,
+    -> First_Name VARCHAR(50),
+    -> Last_Name VARCHAR(50),
+    -> Home_Address VARCHAR(50),
+    -> Permanent_Address VARCHAR(50),
+    -> Phone_Number VARCHAR(11),
+    -> Age INT
+    -> ) ;
+Query OK, 0 rows affected (0.02 sec)
 
+mysql> insert into people
+    -> value
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> insert into people
+    -> values
+    -> (1, 'Rahim', 'Hasan', 'Dhaka', 'Chittagong', '01712345678', 22),
+    -> (2, 'Karim', 'Ahmed', 'Rajshahi', 'Khulna', '01898765432', 25),
+    -> (3, 'Sakib', 'Hossain', 'Sylhet', 'Dhaka', '01911223344', 21),
+    -> (4, 'Nusrat', 'Jahan', 'Barisal', 'Barisal', '01622334455', 23),
+    -> (5, 'Tanvir', 'Islam', 'Rangpur', 'Rangpur', '01533445566', 24),
+    -> (6, 'Ayesha', 'Akter', 'Comilla', 'Dhaka', '01744556677', 20),
+    -> (7, 'Mehedi', 'Hasan', 'Jessore', 'Khulna', '01855667788', 26),
+    -> (8, 'Farhan', 'Kabir', 'Mymensingh', 'Dhaka', '01966778899', 27),
+    -> (9, 'Priya', 'Sultana', 'Noakhali', 'Chittagong', '01677889900', 22)
+    -> (10, 'Rafi', 'Mahmud', 'Bogura', 'Rajshahi', '01788990011', 23);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(10, 'Rafi', 'Mahmud', 'Bogura', 'Rajshahi', '01788990011', 23)' at line 12
+mysql> insert into people
+    -> values
+    ->
+    -> (1, 'Rahim', 'Hasan', 'Dhaka', 'Chittagong', '01712345678', 22),
+    ->  (2, 'Karim', 'Ahmed', 'Rajshahi', 'Khulna', '01898765432', 25),
+    -> (3, 'Sakib', 'Hossain', 'Sylhet', 'Dhaka', '01911223344', 21),
+    ->  (4, 'Nusrat', 'Jahan', 'Barisal', 'Barisal', '01622334455', 23),
+    ->  (5, 'Tanvir', 'Islam', 'Rangpur', 'Rangpur', '01533445566', 24),
+    -> (6, 'Ayesha', 'Akter', 'Comilla', 'Dhaka', '01744556677', 20),
+    -> (7, 'Mehedi', 'Hasan', 'Jessore', 'Khulna', '01855667788', 26),
+    -> (8, 'Farhan', 'Kabir', 'Mymensingh', 'Dhaka', '01966778899', 27) ,
+    ->  (9, 'Priya', 'Sultana', 'Noakhali', 'Chittagong', '01677889900', 22)
+    ->  (10, 'Rafi', 'Mahmud', 'Bogura', 'Rajshahi', '01788990011', 23) ,
+    -> (11, 'Anika', 'Rahman', 'Dhaka', 'Dhaka', '01810000001', 21),
+    -> (12, 'Nayeem', 'Khan', 'Khulna', 'Khulna', '01810000002', 24),
+    -> (13, 'Mim', 'Akter', 'Sylhet', 'Sylhet', '01810000003', 20),
+    -> (14, 'Jahid', 'Hasan', 'Rajshahi', 'Rajshahi', '01810000004', 26),
+    -> (15, 'Rupa', 'Sarker', 'Barisal', 'Dhaka', '01810000005', 22),
+    -> (16, 'Sohan', 'Islam', 'Cumilla', 'Cumilla', '01810000006', 25),
+    -> (17, 'Tania', 'Begum', 'Rangpur', 'Rangpur', '01810000007', 23),
+    -> (18, 'Arif', 'Haque', 'Gazipur', 'Dhaka', '01810000008', 27),
+    -> (19, 'Mahi', 'Chowdhury', 'Coxs Bazar', 'Chittagong', '01810000009', 24),
+    -> (20, 'Rasel', 'Mia', 'Dinajpur', 'Rangpur', '01810000010', 28)  ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(10, 'Rafi', 'Mahmud', 'Bogura', 'Rajshahi', '01788990011', 23) ,
+(11, 'Anika',' at line 13
+mysql> insert into people
+    ->  values
+    -> (1, 'Rahim', 'Hasan', 'Dhaka', 'Chittagong', '01712345678', 22),
+    -> (2, 'Karim', 'Ahmed', 'Rajshahi', 'Khulna', '01898765432', 25),
+    -> (3, 'Sakib', 'Hossain', 'Sylhet', 'Dhaka', '01911223344', 21),
+    -> (4, 'Nusrat', 'Jahan', 'Barisal', 'Barisal', '01622334455', 23),
+    ->  (5, 'Tanvir', 'Islam', 'Rangpur', 'Rangpur', '01533445566', 24),
+    -> (6, 'Ayesha', 'Akter', 'Comilla', 'Dhaka', '01744556677', 20),
+    -> (7, 'Farhan', 'Kabir', 'Mymensingh', 'Dhaka', '01966778899', 27) ,
+    -> (8, 'Mehedi', 'Hasan', 'Jessore', 'Khulna', '01855667788', 26),
+    ->  (9, 'Priya', 'Sultana', 'Noakhali', 'Chittagong', '01677889900', 22) ,
+    -> (10, 'Rafi', 'Mahmud', 'Bogura', 'Rajshahi', '01788990011', 23) ,
+    -> (11, 'Anika', 'Rahman', 'Dhaka', 'Dhaka', '01810000001', 21),
+    -> (12, 'Nayeem', 'Khan', 'Khulna', 'Khulna', '01810000002', 24),
+    -> (13, 'Mim', 'Akter', 'Sylhet', 'Sylhet', '01810000003', 20),
+    -> (14, 'Jahid', 'Hasan', 'Rajshahi', 'Rajshahi', '01810000004', 26),
+    ->  (15, 'Rupa', 'Sarker', 'Barisal', 'Dhaka', '01810000005', 22),
+    -> (16, 'Sohan', 'Islam', 'Cumilla', 'Cumilla', '01810000006', 25),
+    ->  (17, 'Tania', 'Begum', 'Rangpur', 'Rangpur', '01810000007', 23),
+    ->  (18, 'Arif', 'Haque', 'Gazipur', 'Dhaka', '01810000008', 27),
+    ->  (19, 'Mahi','Chowdhury','Coxs Bazar','Chittagong', '01810000009',24) ,
+    ->  (20, 'Rasel', 'Mia', 'Dinajpur', 'Rangpur', '01810000010', 28)  ;
+Query OK, 20 rows affected (0.01 sec)
+Records: 20  Duplicates: 0  Warnings: 0
 
-mysql> create database Customer ;
+mysql> select * from people ;
++------------+------------+-----------+--------------+-------------------+--------------+------+
+| CustomerID | First_Name | Last_Name | Home_Address | Permanent_Address | Phone_Number | Age  |
++------------+------------+-----------+--------------+-------------------+--------------+------+
+|          1 | Rahim      | Hasan     | Dhaka        | Chittagong        | 01712345678  |   22 |
+|          2 | Karim      | Ahmed     | Rajshahi     | Khulna            | 01898765432  |   25 |
+|          3 | Sakib      | Hossain   | Sylhet       | Dhaka             | 01911223344  |   21 |
+|          4 | Nusrat     | Jahan     | Barisal      | Barisal           | 01622334455  |   23 |
+|          5 | Tanvir     | Islam     | Rangpur      | Rangpur           | 01533445566  |   24 |
+|          6 | Ayesha     | Akter     | Comilla      | Dhaka             | 01744556677  |   20 |
+|          7 | Farhan     | Kabir     | Mymensingh   | Dhaka             | 01966778899  |   27 |
+|          8 | Mehedi     | Hasan     | Jessore      | Khulna            | 01855667788  |   26 |
+|          9 | Priya      | Sultana   | Noakhali     | Chittagong        | 01677889900  |   22 |
+|         10 | Rafi       | Mahmud    | Bogura       | Rajshahi          | 01788990011  |   23 |
+|         11 | Anika      | Rahman    | Dhaka        | Dhaka             | 01810000001  |   21 |
+|         12 | Nayeem     | Khan      | Khulna       | Khulna            | 01810000002  |   24 |
+|         13 | Mim        | Akter     | Sylhet       | Sylhet            | 01810000003  |   20 |
+|         14 | Jahid      | Hasan     | Rajshahi     | Rajshahi          | 01810000004  |   26 |
+|         15 | Rupa       | Sarker    | Barisal      | Dhaka             | 01810000005  |   22 |
+|         16 | Sohan      | Islam     | Cumilla      | Cumilla           | 01810000006  |   25 |
+|         17 | Tania      | Begum     | Rangpur      | Rangpur           | 01810000007  |   23 |
+|         18 | Arif       | Haque     | Gazipur      | Dhaka             | 01810000008  |   27 |
+|         19 | Mahi       | Chowdhury | Coxs Bazar   | Chittagong        | 01810000009  |   24 |
+|         20 | Rasel      | Mia       | Dinajpur     | Rangpur           | 01810000010  |   28 |
++------------+------------+-----------+--------------+-------------------+--------------+------+
+20 rows in set (0.00 sec)
+
+mysql> selece
+    ->  CustomerID , First_Name , Permanent_Address , Phone_Number
+    -> from
+    -> people ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selece
+ CustomerID , First_Name , Permanent_Address , Phone_Number
+from
+people' at line 1
+mysql> select
+    ->  CustomerID , First_Name , Permanent_Address , Phone_Number
+    -> from
+    -> people ;
++------------+------------+-------------------+--------------+
+| CustomerID | First_Name | Permanent_Address | Phone_Number |
++------------+------------+-------------------+--------------+
+|          1 | Rahim      | Chittagong        | 01712345678  |
+|          2 | Karim      | Khulna            | 01898765432  |
+|          3 | Sakib      | Dhaka             | 01911223344  |
+|          4 | Nusrat     | Barisal           | 01622334455  |
+|          5 | Tanvir     | Rangpur           | 01533445566  |
+|          6 | Ayesha     | Dhaka             | 01744556677  |
+|          7 | Farhan     | Dhaka             | 01966778899  |
+|          8 | Mehedi     | Khulna            | 01855667788  |
+|          9 | Priya      | Chittagong        | 01677889900  |
+|         10 | Rafi       | Rajshahi          | 01788990011  |
+|         11 | Anika      | Dhaka             | 01810000001  |
+|         12 | Nayeem     | Khulna            | 01810000002  |
+|         13 | Mim        | Sylhet            | 01810000003  |
+|         14 | Jahid      | Rajshahi          | 01810000004  |
+|         15 | Rupa       | Dhaka             | 01810000005  |
+|         16 | Sohan      | Cumilla           | 01810000006  |
+|         17 | Tania      | Rangpur           | 01810000007  |
+|         18 | Arif       | Dhaka             | 01810000008  |
+|         19 | Mahi       | Chittagong        | 01810000009  |
+|         20 | Rasel      | Rangpur           | 01810000010  |
++------------+------------+-------------------+--------------+
+20 rows in set (0.00 sec)
+
+mysql> select distinct
+    ->  Home_Address , Permanent_Address ,  Age
+    -> from
+    -> people ;
++--------------+-------------------+------+
+| Home_Address | Permanent_Address | Age  |
++--------------+-------------------+------+
+| Dhaka        | Chittagong        |   22 |
+| Rajshahi     | Khulna            |   25 |
+| Sylhet       | Dhaka             |   21 |
+| Barisal      | Barisal           |   23 |
+| Rangpur      | Rangpur           |   24 |
+| Comilla      | Dhaka             |   20 |
+| Mymensingh   | Dhaka             |   27 |
+| Jessore      | Khulna            |   26 |
+| Noakhali     | Chittagong        |   22 |
+| Bogura       | Rajshahi          |   23 |
+| Dhaka        | Dhaka             |   21 |
+| Khulna       | Khulna            |   24 |
+| Sylhet       | Sylhet            |   20 |
+| Rajshahi     | Rajshahi          |   26 |
+| Barisal      | Dhaka             |   22 |
+| Cumilla      | Cumilla           |   25 |
+| Rangpur      | Rangpur           |   23 |
+| Gazipur      | Dhaka             |   27 |
+| Coxs Bazar   | Chittagong        |   24 |
+| Dinajpur     | Rangpur           |   28 |
++--------------+-------------------+------+
+20 rows in set (0.00 sec)
+
+mysql> select
+    ->  CustomerID , First_Name , Permanent_Address , Phone_Number
+    -> from
+    -> people
+    -> where Age = 25 ;
++------------+------------+-------------------+--------------+
+| CustomerID | First_Name | Permanent_Address | Phone_Number |
++------------+------------+-------------------+--------------+
+|          2 | Karim      | Khulna            | 01898765432  |
+|         16 | Sohan      | Cumilla           | 01810000006  |
++------------+------------+-------------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select
+    -> First_Name , Last_Name , Home_Address , Permanent_Address , Age
+    -> from
+    -> people
+    -> order by First_Name , Last_Name , Home_Address , Permanent_Address , Age asc ;
++------------+-----------+--------------+-------------------+------+
+| First_Name | Last_Name | Home_Address | Permanent_Address | Age  |
++------------+-----------+--------------+-------------------+------+
+| Anika      | Rahman    | Dhaka        | Dhaka             |   21 |
+| Arif       | Haque     | Gazipur      | Dhaka             |   27 |
+| Ayesha     | Akter     | Comilla      | Dhaka             |   20 |
+| Farhan     | Kabir     | Mymensingh   | Dhaka             |   27 |
+| Jahid      | Hasan     | Rajshahi     | Rajshahi          |   26 |
+| Karim      | Ahmed     | Rajshahi     | Khulna            |   25 |
+| Mahi       | Chowdhury | Coxs Bazar   | Chittagong        |   24 |
+| Mehedi     | Hasan     | Jessore      | Khulna            |   26 |
+| Mim        | Akter     | Sylhet       | Sylhet            |   20 |
+| Nayeem     | Khan      | Khulna       | Khulna            |   24 |
+| Nusrat     | Jahan     | Barisal      | Barisal           |   23 |
+| Priya      | Sultana   | Noakhali     | Chittagong        |   22 |
+| Rafi       | Mahmud    | Bogura       | Rajshahi          |   23 |
+| Rahim      | Hasan     | Dhaka        | Chittagong        |   22 |
+| Rasel      | Mia       | Dinajpur     | Rangpur           |   28 |
+| Rupa       | Sarker    | Barisal      | Dhaka             |   22 |
+| Sakib      | Hossain   | Sylhet       | Dhaka             |   21 |
+| Sohan      | Islam     | Cumilla      | Cumilla           |   25 |
+| Tania      | Begum     | Rangpur      | Rangpur           |   23 |
+| Tanvir     | Islam     | Rangpur      | Rangpur           |   24 |
++------------+-----------+--------------+-------------------+------+
+20 rows in set (0.00 sec)
+
+mysql> select
+    ->  First_Name , Last_Name , Home_Address , Permanent_Address , Age
+    -> from
+    -> people
+    -> order by First_Name , Last_Name , Home_Address , Permanent_Address , Age desc ;
++------------+-----------+--------------+-------------------+------+
+| First_Name | Last_Name | Home_Address | Permanent_Address | Age  |
++------------+-----------+--------------+-------------------+------+
+| Anika      | Rahman    | Dhaka        | Dhaka             |   21 |
+| Arif       | Haque     | Gazipur      | Dhaka             |   27 |
+| Ayesha     | Akter     | Comilla      | Dhaka             |   20 |
+| Farhan     | Kabir     | Mymensingh   | Dhaka             |   27 |
+| Jahid      | Hasan     | Rajshahi     | Rajshahi          |   26 |
+| Karim      | Ahmed     | Rajshahi     | Khulna            |   25 |
+| Mahi       | Chowdhury | Coxs Bazar   | Chittagong        |   24 |
+| Mehedi     | Hasan     | Jessore      | Khulna            |   26 |
+| Mim        | Akter     | Sylhet       | Sylhet            |   20 |
+| Nayeem     | Khan      | Khulna       | Khulna            |   24 |
+| Nusrat     | Jahan     | Barisal      | Barisal           |   23 |
+| Priya      | Sultana   | Noakhali     | Chittagong        |   22 |
+| Rafi       | Mahmud    | Bogura       | Rajshahi          |   23 |
+| Rahim      | Hasan     | Dhaka        | Chittagong        |   22 |
+| Rasel      | Mia       | Dinajpur     | Rangpur           |   28 |
+| Rupa       | Sarker    | Barisal      | Dhaka             |   22 |
+| Sakib      | Hossain   | Sylhet       | Dhaka             |   21 |
+| Sohan      | Islam     | Cumilla      | Cumilla           |   25 |
+| Tania      | Begum     | Rangpur      | Rangpur           |   23 |
+| Tanvir     | Islam     | Rangpur      | Rangpur           |   24 |
++------------+-----------+--------------+-------------------+------+
+20 rows in set (0.00 sec)
+
+mysql>  select
+    -> First_Name , Last_Name , Home_Address , Permanent_Address , Age
+    -> from
+    -> people
+    -> order by First_Name , Last_Name , Home_Address , Permanent_Address , Age asc , order by First_Name , Last_Name , Home_Address , Permanent_Address , Age desc ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by First_Name , Last_Name , Home_Address , Permanent_Address , Age desc' at line 5
+mysql> update
+    -> people
+    -> set
+    ->  Home_Address = 'Sylhet' , Permanent_Address = 'Sylhet' , Age = 25
+    -> where
+    -> CustomerID = 1 ;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from pepple ;
+ERROR 1146 (42S02): Table 'bd.pepple' doesn't exist
+mysql> select * from people ;
++------------+------------+-----------+--------------+-------------------+--------------+------+
+| CustomerID | First_Name | Last_Name | Home_Address | Permanent_Address | Phone_Number | Age  |
++------------+------------+-----------+--------------+-------------------+--------------+------+
+|          1 | Rahim      | Hasan     | Sylhet       | Sylhet            | 01712345678  |   25 |
+|          2 | Karim      | Ahmed     | Rajshahi     | Khulna            | 01898765432  |   25 |
+|          3 | Sakib      | Hossain   | Sylhet       | Dhaka             | 01911223344  |   21 |
+|          4 | Nusrat     | Jahan     | Barisal      | Barisal           | 01622334455  |   23 |
+|          5 | Tanvir     | Islam     | Rangpur      | Rangpur           | 01533445566  |   24 |
+|          6 | Ayesha     | Akter     | Comilla      | Dhaka             | 01744556677  |   20 |
+|          7 | Farhan     | Kabir     | Mymensingh   | Dhaka             | 01966778899  |   27 |
+|          8 | Mehedi     | Hasan     | Jessore      | Khulna            | 01855667788  |   26 |
+|          9 | Priya      | Sultana   | Noakhali     | Chittagong        | 01677889900  |   22 |
+|         10 | Rafi       | Mahmud    | Bogura       | Rajshahi          | 01788990011  |   23 |
+|         11 | Anika      | Rahman    | Dhaka        | Dhaka             | 01810000001  |   21 |
+|         12 | Nayeem     | Khan      | Khulna       | Khulna            | 01810000002  |   24 |
+|         13 | Mim        | Akter     | Sylhet       | Sylhet            | 01810000003  |   20 |
+|         14 | Jahid      | Hasan     | Rajshahi     | Rajshahi          | 01810000004  |   26 |
+|         15 | Rupa       | Sarker    | Barisal      | Dhaka             | 01810000005  |   22 |
+|         16 | Sohan      | Islam     | Cumilla      | Cumilla           | 01810000006  |   25 |
+|         17 | Tania      | Begum     | Rangpur      | Rangpur           | 01810000007  |   23 |
+|         18 | Arif       | Haque     | Gazipur      | Dhaka             | 01810000008  |   27 |
+|         19 | Mahi       | Chowdhury | Coxs Bazar   | Chittagong        | 01810000009  |   24 |
+|         20 | Rasel      | Mia       | Dinajpur     | Rangpur           | 01810000010  |   28 |
++------------+------------+-----------+--------------+-------------------+--------------+------+
+20 rows in set (0.00 sec)
+
+mysql> dedlete
+    -> from
+    -> people
+    -> where
+    -> CustomerID = 2 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dedlete
+from
+people
+where
+CustomerID = 2' at line 1
+mysql> delete
+    -> from
+    -> people
+    -> where
+    -> CustomerID = 2 ;
 Query OK, 1 row affected (0.01 sec)
 
+mysql> select * from people ;
++------------+------------+-----------+--------------+-------------------+--------------+------+
+| CustomerID | First_Name | Last_Name | Home_Address | Permanent_Address | Phone_Number | Age  |
++------------+------------+-----------+--------------+-------------------+--------------+------+
+|          1 | Rahim      | Hasan     | Sylhet       | Sylhet            | 01712345678  |   25 |
+|          3 | Sakib      | Hossain   | Sylhet       | Dhaka             | 01911223344  |   21 |
+|          4 | Nusrat     | Jahan     | Barisal      | Barisal           | 01622334455  |   23 |
+|          5 | Tanvir     | Islam     | Rangpur      | Rangpur           | 01533445566  |   24 |
+|          6 | Ayesha     | Akter     | Comilla      | Dhaka             | 01744556677  |   20 |
+|          7 | Farhan     | Kabir     | Mymensingh   | Dhaka             | 01966778899  |   27 |
+|          8 | Mehedi     | Hasan     | Jessore      | Khulna            | 01855667788  |   26 |
+|          9 | Priya      | Sultana   | Noakhali     | Chittagong        | 01677889900  |   22 |
+|         10 | Rafi       | Mahmud    | Bogura       | Rajshahi          | 01788990011  |   23 |
+|         11 | Anika      | Rahman    | Dhaka        | Dhaka             | 01810000001  |   21 |
+|         12 | Nayeem     | Khan      | Khulna       | Khulna            | 01810000002  |   24 |
+|         13 | Mim        | Akter     | Sylhet       | Sylhet            | 01810000003  |   20 |
+|         14 | Jahid      | Hasan     | Rajshahi     | Rajshahi          | 01810000004  |   26 |
+|         15 | Rupa       | Sarker    | Barisal      | Dhaka             | 01810000005  |   22 |
+|         16 | Sohan      | Islam     | Cumilla      | Cumilla           | 01810000006  |   25 |
+|         17 | Tania      | Begum     | Rangpur      | Rangpur           | 01810000007  |   23 |
+|         18 | Arif       | Haque     | Gazipur      | Dhaka             | 01810000008  |   27 |
+|         19 | Mahi       | Chowdhury | Coxs Bazar   | Chittagong        | 01810000009  |   24 |
+|         20 | Rasel      | Mia       | Dinajpur     | Rangpur           | 01810000010  |   28 |
++------------+------------+-----------+--------------+-------------------+--------------+------+
+19 rows in set (0.00 sec)
 
-
-
-
-mysql> use Customer ;
-
-
-
-
-
-Database changed
-
-
-
-mysql> create table Customer (
-    -> CustomerID int primary key ,
-    -> CustomerID varchar (50) ,
-    -> ^C
-	
-	
-	
-	
-mysql> create table Customer (
-    ->  CustomerID int primary key ,
-    -> FirstName varchar (50) ,
-    -> LastName varchar (50),
-    -> Country varchar (25),
-    -> Age int check (Age >= 0 AND Age <= 99) ,
-    -> Phone int (10)
-    -> ) ;
-Query OK, 0 rows affected, 1 warning (0.05 sec)
-
-
-
-mysql> SHOW TABLES
-    -> ;
-+--------------------+
-| Tables_in_customer |
-+--------------------+
-| customer           |
-+--------------------+
+mysql> SELECT COUNT(*)
+    -> FROM people ;
++----------+
+| COUNT(*) |
++----------+
+|       19 |
++----------+
 1 row in set (0.01 sec)
 
+mysql> select
+    -> sum ( * )
+    -> from
+    -> people ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* )
+from
+people' at line 2
+mysql> select
+    -> sum ( Age )
+    -> from
+    -> people ;
+ERROR 1630 (42000): FUNCTION bd.sum does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT SUM(Age)
+    -> FROM people;
++----------+
+| SUM(Age) |
++----------+
+|      451 |
++----------+
+1 row in set (0.00 sec)
 
+mysql> select
+    -> sum (Age)
+    -> from
+    -> people ;
+ERROR 1630 (42000): FUNCTION bd.sum does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> select
+    -> Permanent_Address, COUNT(*)
+    -> from
+    -> people
+    ->  Permanent_Address ;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'bd.Permanent_Address.Permanent_Address'; this is incompatible with sql_mode=only_full_group_by
+mysql> select
+    ->  Permanent_Address ,
+    -> count (*)
+    -> from
+    -> people
+    -> Permanent_Address ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*)
+from
+people
+Permanent_Address' at line 3
+mysql> select
+    -> Permanent_Address ,
+    -> count (*)
+    -> from
+    -> people
+    -> group by
+    -> Permanent_Address ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*)
+from
+people
+group by
+Permanent_Address' at line 3
+mysql> SELECT
+    ->     Permanent_Address,
+    ->     COUNT(*)
+    -> FROM
+    ->     people
+    -> GROUP BY
+    ->     Permanent_Address;
++-------------------+----------+
+| Permanent_Address | COUNT(*) |
++-------------------+----------+
+| Sylhet            |        2 |
+| Dhaka             |        6 |
+| Barisal           |        1 |
+| Rangpur           |        3 |
+| Khulna            |        2 |
+| Chittagong        |        2 |
+| Rajshahi          |        2 |
+| Cumilla           |        1 |
++-------------------+----------+
+8 rows in set (0.00 sec)
 
+mysql> SELECT Permanent_Address, COUNT(*)
+    -> FROM people
+    -> GROUP BY Permanent_Address
+    -> GROUP BY Permanent_Address
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY Permanent_Address' at line 4
+mysql> SELECT Permanent_Address, COUNT(*)
+    -> FROM people
+    -> GROUP BY Permanent_Address
+    -> HAVING COUNT(*) > 2 ;
++-------------------+----------+
+| Permanent_Address | COUNT(*) |
++-------------------+----------+
+| Dhaka             |        6 |
+| Rangpur           |        3 |
++-------------------+----------+
+2 rows in set (0.00 sec)
 
-
-mysql> SHOW Customer ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds 
-to your MySQL server version for the right syntax to use near 'Customer' at line 1
-
-
-
-
-mysql>  SHOW customer ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds 
-to your MySQL server version for the right syntax to use near 'customer' at line 1
-
-
-
-
-
-mysql> insert into Customer ( CustomerID, FirstName, LastName, Country, Age, Phone )
-    -> values
-    -> (1, 'Luca', 'Bianchi', 'Italy', 23, 123456 ) ,
-    -> (2, 'Aiko', 'Tanaka', 'Japan', 21,  246864 ) ,
-    -> (3, 'Carlos', 'Gomez', 'Spain', 24, 678882 ) ,
-    -> (4, 'Sofia', 'Müller', 'Germany', 22, 876542 ) ,
-    -> (5, 'Ethan', 'Johnson', 'USA', 25, 654322 ) ;
-Query OK, 5 rows affected (0.01 sec)
-Records: 5  Duplicates: 0  Warnings: 0
-
-
-
-
-
-
-mysql> select * from Customer ;
-+------------+-----------+----------+---------+------+--------+
-| CustomerID | FirstName | LastName | Country | Age  | Phone  |
-+------------+-----------+----------+---------+------+--------+
-|          1 | Luca      | Bianchi  | Italy   |   23 | 123456 |
-|          2 | Aiko      | Tanaka   | Japan   |   21 | 246864 |
-|          3 | Carlos    | Gomez    | Spain   |   24 | 678882 |
-|          4 | Sofia     | Müller   | Germany |   22 | 876542 |
-|          5 | Ethan     | Johnson  | USA     |   25 | 654322 |
-+------------+-----------+----------+---------+------+--------+
-5 rows in set (0.00 sec)
-
-
-
-
+mysql> SELECT Permanent_Address, COUNT(*)
+    -> FROM people
+    -> GROUP BY Permanent_Address
+    -> HAVING COUNT(*) > 2;
++-------------------+----------+
+| Permanent_Address | COUNT(*) |
++-------------------+----------+
+| Dhaka             |        6 |
+| Rangpur           |        3 |
++-------------------+----------+
+2 rows in set (0.00 sec)
 
 mysql>
