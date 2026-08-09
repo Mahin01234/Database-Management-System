@@ -1,0 +1,2741 @@
+
+Player (id, name, position, ranking, team_id, age)
+
+Team (id, name, ranking, trophy_count)
+
+Coach (id, name, nationality, year_of_experience, trophy_count, ranking, t_id)
+
+Match (id, home_team, away_team, h_score, a_score, day, month, year, result, POTM)
+
+Match_details (p_id, m_id, rating, goal, assist, key_pass, tackle_won, saves)
+
+
+
+
+INSERT INTO Team VALUES
+(1, 'Real Madrid', 1, 14),
+(2, 'Barcelona', 2, 5),
+(3, 'Manchester City', 3, 1),
+(4, 'Liverpool', 4, 6),
+(5, 'Bayern Munich', 5, 6);
+
+
+INSERT INTO Player VALUES
+(101, 'Karim Benzema', 'Forward', 91, 1, 35),
+(102, 'Vinicius Junior', 'Forward', 89, 1, 23),
+(103, 'Pedri', 'Midfielder', 87, 2, 21),
+(104, 'Robert Lewandowski', 'Forward', 90, 2, 35),
+(105, 'Kevin De Bruyne', 'Midfielder', 91, 3, 32),
+(106, 'Erling Haaland', 'Forward', 92, 3, 24),
+(107, 'Virgil van Dijk', 'Defender', 89, 4, 33),
+(108, 'Mohamed Salah', 'Forward', 90, 4, 32),
+(109, 'Joshua Kimmich', 'Midfielder', 89, 5, 29),
+(110, 'Manuel Neuer', 'Goalkeeper', 90, 5, 38);
+
+
+
+
+INSERT INTO Coach VALUES
+(1, 'Carlo Ancelotti', 'Italy', 28, 25, 1, 1),
+(2, 'Xavi Hernandez', 'Spain', 5, 2, 2, 2),
+(3, 'Pep Guardiola', 'Spain', 18, 35, 1, 3),
+(4, 'Jurgen Klopp', 'Germany', 22, 15, 3, 4),
+(5, 'Thomas Tuchel', 'Germany', 17, 10, 4, 5);
+
+
+
+INSERT INTO Match VALUES
+(1, 1, 2, 3, 2, 10, 5, 2024, 'Home Win', 101),
+(2, 3, 4, 2, 1, 15, 5, 2024, 'Home Win', 106),
+(3, 5, 1, 1, 1, 20, 5, 2024, 'Draw', 110),
+(4, 2, 3, 0, 2, 25, 5, 2024, 'Away Win', 105),
+(5, 4, 5, 2, 2, 30, 5, 2024, 'Draw', 108);
+
+
+
+INSERT INTO Match_details VALUES
+(101, 1, 9.5, 2, 1, 3, 0, 0),
+(102, 1, 8.8, 1, 1, 4, 1, 0),
+(104, 1, 8.2, 2, 0, 2, 0, 0),
+(106, 2, 9.6, 2, 0, 3, 0, 0),
+(105, 2, 8.9, 0, 2, 5, 2, 0),
+(108, 5, 9.1, 1, 1, 3, 0, 0),
+(110, 3, 9.0, 0, 0, 1, 0, 6),
+(107, 2, 8.7, 0, 0, 1, 5, 0),
+(103, 4, 8.5, 0, 1, 4, 2, 0),
+(109, 3, 8.6, 1, 0, 3, 3, 0);
+
+
+
+Question:
+SELECT
+Display all players.
+Display all teams.
+Display all coaches.
+Display all matches.
+Display player names only.
+Display team names only.
+Display coach names only.
+Display player names and ages.
+Display team names and rankings.
+Display coach names and nationality.
+WHERE
+Find all players older than 25.
+Find all players older than 30.
+Find all forwards.
+Find all midfielders.
+Find all defenders.
+Find all goalkeepers.
+Find all teams with ranking less than 10.
+Find all teams with more than 3 trophies.
+Find coaches with more than 10 years of experience.
+Find coaches whose nationality is Brazil.
+
+DISTINCT
+Show all distinct player positions.
+Show all distinct nationalities of coaches.
+Show all distinct team rankings.
+ORDER BY
+Display players ordered by age.
+Display players ordered by age descending.
+Display teams ordered by ranking.
+Display coaches ordered by experience.
+Display players ordered alphabetically.
+LIKE
+Find players whose name starts with 'A'.
+Find players whose name ends with 'n'.
+Find players whose name contains 'ra'.
+Find coaches whose name starts with 'J'.
+Find teams whose name contains 'United'.
+BETWEEN
+Find players aged between 20 and 30.
+Find players ranked between 50 and 100.
+Find teams ranked between 1 and 10.
+Find coaches with experience between 5 and 15 years.
+Alias
+Show player name as Player_Name.
+Show team name as Team_Name.
+Show coach name as Coach_Name.
+Show player ranking as FIFA_Ranking.
+Display player name and age using column aliases.
+Intermediate Level
+INNER JOIN
+Find player name and team name.
+Find player name and team ranking.
+Find player name and trophy count of their team.
+Find coach name and team name.
+Find coach nationality and team name.
+Find coach name and team ranking.
+Find player name, position and team name.
+Find players older than 25 with their team names.
+Find forwards and their team names.
+Find defenders and their team names.
+Find goalkeepers and their team names.
+Find midfielders and their team names.
+JOIN + WHERE
+Find players of teams having more than 3 trophies.
+Find players of teams ranked below 10.
+Find coaches whose team has won more than 5 trophies.
+Find players whose age is greater than 30 and show team names.
+Find players whose position is 'Forward' and show team names.
+Match + Team
+Find home team names of every match.
+Find away team names of every match.
+Find match results with home team names.
+Find match results with away team names.
+Find home team and away team names for every match.
+Match Details
+Find player names and goals scored.
+Find player names and assists.
+Find player names and ratings.
+Find player names and key passes.
+Find player names and tackles won.
+Find player names and saves.
+Multiple JOIN
+Find player name, team name and coach name.
+Find player name, coach nationality and team name.
+Find player name, team ranking and coach experience.
+Find player name, team trophy count and coach name.
+Find player name, coach name and coach nationality.
+Hard Level
+Find players and the match IDs they played.
+Find player names with match ratings.
+Find player names with goals and assists.
+Find player names with ratings and team names.
+Find player names, team names and match ratings.
+Find player names, match dates and ratings.
+Find player names who scored at least one goal with team names.
+Find players who made assists with team names.
+Find players who made key passes with team names.
+Find goalkeepers with number of saves.
+Find forwards with goals scored.
+Find defenders with tackles won.
+Find midfielders with assists.
+Find player names, coach names and match ratings.
+Find player names, team names, coach names and match IDs.
+
+
+পরীক্ষার জন্য সবচেয়ে গুরুত্বপূর্ণ (Top 20)
+Find all players.
+Find player names and positions.
+Find players older than 30.
+Find players between age 20 and 30.
+Find distinct player positions.
+Find players ordered by age.
+Find players whose name starts with 'A'.
+Find player names using alias.
+Find player name and team name.
+Find coach name and team name.
+Find player name, position and team name.
+Find forwards and their team names.
+Find players older than 25 with team names.
+Find teams with more than 3 trophies.
+Find coach nationality and team name.
+Find player name and goals.
+Find player name and assists.
+Find player name, team name and coach name.
+Find match results with team names.
+Find player name, team name and match rating.
+
+
+
+
+
+Microsoft Windows [Version 10.0.26100.8875]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\DELL>mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases ;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       |
+| labour_management_system |
+| mahin                    |
+| mysql                    |
+| performance_schema       |
+| sys                      |
++--------------------------+
+6 rows in set (0.04 sec)
+
+mysql> use mahin ;
+Database changed
+mysql> select * from mahin ;
+ERROR 1146 (42S02): Table 'mahin.mahin' doesn't exist
+mysql> drop mahin ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mahin' at line 1
+mysql> drop database mahin ;
+Query OK, 2 rows affected (0.06 sec)
+
+mysql> show databases ;
++--------------------------+
+| Database                 |
++--------------------------+
+| information_schema       |
+| labour_management_system |
+| mysql                    |
+| performance_schema       |
+| sys                      |
++--------------------------+
+5 rows in set (0.00 sec)
+
+mysql> create database HP ;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases ;
++--------------------------+
+| Database                 |
++--------------------------+
+| hp                       |
+| information_schema       |
+| labour_management_system |
+| mysql                    |
+| performance_schema       |
+| sys                      |
++--------------------------+
+6 rows in set (0.00 sec)
+
+mysql> create table hello ;
+ERROR 1046 (3D000): No database selected
+mysql> create table Player
+    -> (
+    -> id int primary key ,
+    -> name varchar (50) ,
+    -> position int ,
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5
+mysql> create table Player
+    -> (
+    -> id int primary key ,
+    ->  name varchar (50) ,
+    -> position varvhar (20) ,
+    -> ranking int ,
+    -> team_id int ,
+    -> age int ,
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varvhar (20) ,
+ranking int ,
+team_id int ,
+age int ,' at line 5
+mysql> create table team
+    -> (
+    -> id int primary key ,
+    -> name varchar (50) ,
+    ->
+    -> ranking int ,
+    -> trophy_count int
+    -> ) ;
+ERROR 1046 (3D000): No database selected
+mysql> use hp ;
+Database changed
+mysql>  create table team
+    -> (
+    -> id int primary key ,
+    -> name varchar (50) ,
+    -> ranking int ,
+    -> trophy_count int
+    -> ) ;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> create table Player
+    -> (
+    -> id int primary key ,
+    -> name varchar (50) ,
+    ->  position varvhar (20) ,
+    -> ranking int ,
+    -> team_id int ,
+    ->  age int ,
+    -> foreign key ( team_id) references team (id)
+    -> ) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varvhar (20) ,
+ranking int ,
+team_id int ,
+ age int ,
+foreign key ( team_id) ref' at line 5
+mysql> create table Player
+    -> (
+    -> id int primary key ,
+    -> name varchar (50) ,
+    -> position varchar (20) ,
+    -> ranking int ,
+    -> team_id int ,
+    ->  age int ,
+    ->  foreign key ( team_id) references team (id)
+    -> ) ;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> create table coach
+    ->
+    -> (
+    -> id int primary key ,
+    -> name varchar (40) ,
+    -> nationality varchar (30) ,
+    -> year_of_experience int ,
+    -> trophy_count int ,
+    -> ranking int ,
+    -> t_id int
+    -> foreign key (t_id) reference team (id)
+    -> ) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key (t_id) reference team (id)
+)' at line 11
+mysql> create table coach
+    -> (
+    -> id int primary key ,
+    -> name varchar (40) ,
+    -> nationality varchar (30) ,
+    -> year_of_experience int ,
+    ->  trophy_count int
+    -> ranking int ,
+    -> t_id int
+    -> foreign key (team_id) reference team (id)
+    -> ) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ranking int ,
+t_id int
+foreign key (team_id) reference team (id)
+)' at line 8
+mysql> create table coach
+    -> (
+    -> id int primary key ,
+    -> name varchar (40) ,
+    -> nationality varchar (30) ,
+    ->  year_of_experience int ,
+    -> trophy_count int ,
+    -> ranking int ,
+    -> t_id int ,
+    -> foreign key (t_id) reference team (id)
+    -> ) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference team (id)
+)' at line 10
+mysql> create table coach
+    -> (
+    -> id int primary key ,
+    -> name varchar (40) ,
+    -> nationality varchar (30) ,
+    -> year_of_experience int ,
+    -> trophy_count int ,
+    -> ranking int ,
+    -> t_id int ,
+    -> foreign key (t_id) references team (id)
+    -> ) ;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create table match
+    -> (
+    -> id int primary key ,
+    -> home_team int ,
+    -> away_team int ,
+    -> h_score int ,
+    -> a_score int ,
+    -> day int ,
+    -> month int ,
+    -> year int ,
+    -> result varchar (40) ,
+    -> potm int
+    -> ) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'match
+(
+id int primary key ,
+home_team int ,
+away_team int ,
+h_score int ,
+' at line 1
+mysql> create table match
+    -> (
+    -> id int primary key ,
+    -> home_team int ,
+    -> away_team int  ,
+    -> h_score int ,
+    -> a_score int ,
+    -> day int ,
+    -> month int ,
+    -> year int ,
+    -> result varchar (40) ,
+    -> POTM int
+    -> ) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'match
+(
+id int primary key ,
+home_team int ,
+away_team int  ,
+h_score int ,
+a_' at line 1
+mysql> create table matches
+    -> (
+    -> id int primary key ,
+    -> home_team int ,
+    -> away_team int  ,
+    ->  h_score int ,
+    -> a_score int ,
+    -> day int ,
+    -> month int ,
+    -> year int ,
+    -> result varchar (40) ,
+    -> potm int
+    -> ) ;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table matches_details
+    -> (
+    -> p_id int ,
+    -> m_id int ,
+    -> rating decimsl (3,1) ,
+    -> goal int ,
+    -> assist int ,
+    -> key_pass int ,
+    -> tackle_won int ,
+    -> saves int ,
+    -> primary key ( p_id , m_id ) ,
+    -> foreign key (p_id) references player (id) ,
+    -> foreign key (m_id) frferences matches (id)
+    -> ) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decimsl (3,1) ,
+goal int ,
+assist int ,
+key_pass int ,
+tackle_won int ,
+sav' at line 5
+mysql> create table matches_details
+    -> (
+    ->  p_id int ,
+    -> m_id int ,
+    -> rating decimal (3,1) ,
+    -> goal int ,
+    -> assist int ,
+    -> key_pass int ,
+    -> tackle_won int ,
+    -> saves int ,
+    ->  primary key ( p_id , m_id ) ,
+    -> foreign key (p_id) references player (id) ,
+    -> foreign key (m_id) references  matches (id)
+    -> ) ;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into team
+    -> values
+    -> (1 , 'Real Madrid' 1 , 14 ) ,
+    -> (2 , 'Barcelona' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1 , 14 ) ,
+(2 , 'Barcelona'' at line 3
+mysql> insert into team
+    -> values
+    -> (1 , 'Real Madrid' , 1 , 14 ) ,
+    -> (2 , 'Barcelona' , 2 , 5 ) ,
+    -> (3 , 'Manchester City' , 3 , 1 ) ,
+    -> (4  ,  'Liverpool' , 4 , 6 ) ,
+    -> (5  ,   'Bayern Munich' , 5 ,6 ) ;
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from team ;
++----+-----------------+---------+--------------+
+| id | name            | ranking | trophy_count |
++----+-----------------+---------+--------------+
+|  1 | Real Madrid     |       1 |           14 |
+|  2 | Barcelona       |       2 |            5 |
+|  3 | Manchester City |       3 |            1 |
+|  4 | Liverpool       |       4 |            6 |
+|  5 | Bayern Munich   |       5 |            6 |
++----+-----------------+---------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into Player
+    -> values
+    -> (101 , 'Karim Benzema' , 'Forward' , 91 ,  1 , 35 ) ,
+    -> (102 , 'Vinicius Junior' , ''Forward' , 89 , 1 ,23 ) ,
+    '> (103, 'Pedri', 'Midfielder', 87, 2, 21),
+    '> (104, 'Robert Lewandowski', 'Forward', 90, 2, 35),
+    '> (105, 'Kevin De Bruyne', 'Midfielder', 91, 3, 32),
+    '> (106, 'Erling Haaland', 'Forward', 92, 3, 24),
+    '> (107, 'Virgil van Dijk', 'Defender', 89, 4, 33),
+    '> (108, 'Mohamed Salah', 'Forward', 90, 4, 32),
+    '> (109, 'Joshua Kimmich', 'Midfielder', 89, 5, 29),
+    '> (110, 'Manuel Neuer', 'Goalkeeper', 90, 5, 38 );
+    '> ;
+    '>
+    '> ^C
+mysql>
+mysql> insert into Player
+    -> values
+    ->  (101 , 'Karim Benzema' , 'Forward' , 91 ,  1 , 35 ) ,
+    ->  (102 , 'Vinicius Junior' , 'Forward' , 89 , 1 ,23 ) ,
+    -> (103 , 'pedri' , 'Midfielder' , 87 , 2 , 21 ) ,
+    -> (104 , 'Robert Lewandowski' , 'Forward' , 90 , 2 , 35 ) ,
+    -> (105 , 'Kevin De Bruyne' , 'Midifielder' , 91 , 3 , 32 ) ,
+    -> (106 , 'Erling Haaland' , 'Forward' , 92 , 3 , 24 ) ,
+    -> (107, 'Virgil van Dijk', 'Defender', 89, 4, 33),
+    -> (108, 'Mohamed Salah', 'Forward', 90, 4, 32),
+    -> (109, 'Joshua Kimmich', 'Midfielder', 89, 5, 29),
+    -> (110, 'Manuel Neuer', 'Goalkeeper', 90, 5, 38 )   ;
+Query OK, 10 rows affected (0.03 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> sselect * from Player ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sselect * from Player' at line 1
+mysql> select * from player ;
++-----+--------------------+-------------+---------+---------+------+
+| id  | name               | position    | ranking | team_id | age  |
++-----+--------------------+-------------+---------+---------+------+
+| 101 | Karim Benzema      | Forward     |      91 |       1 |   35 |
+| 102 | Vinicius Junior    | Forward     |      89 |       1 |   23 |
+| 103 | pedri              | Midfielder  |      87 |       2 |   21 |
+| 104 | Robert Lewandowski | Forward     |      90 |       2 |   35 |
+| 105 | Kevin De Bruyne    | Midifielder |      91 |       3 |   32 |
+| 106 | Erling Haaland     | Forward     |      92 |       3 |   24 |
+| 107 | Virgil van Dijk    | Defender    |      89 |       4 |   33 |
+| 108 | Mohamed Salah      | Forward     |      90 |       4 |   32 |
+| 109 | Joshua Kimmich     | Midfielder  |      89 |       5 |   29 |
+| 110 | Manuel Neuer       | Goalkeeper  |      90 |       5 |   38 |
++-----+--------------------+-------------+---------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> insert into Coach
+    -> values
+    -> ( 1 , 'Carlo Ancelotti' , 'Italy' , 28  , 25  , 1 , 1 ) ,
+    -> ( 2 , 'Xavi Hernandez' , 'Spain' , 5 , 2 , 2 ,  2 ) ,
+    -> (3 , 'Pep Guardiola' , 'Spain' , 18 , 35 ,  1 , 3 ) ,
+    -> ( 4 , 'Jurgen Klopp' , 'Germany' , 22 , 15 , 3 , 4 ) ,
+    -> (5 , 'Thomas Tuchel' , 'Germany' , 17 , 10 , 4 ,5 )  ;
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from Coach ;
++----+-----------------+-------------+--------------------+--------------+---------+------+
+| id | name            | nationality | year_of_experience | trophy_count | ranking | t_id |
++----+-----------------+-------------+--------------------+--------------+---------+------+
+|  1 | Carlo Ancelotti | Italy       |                 28 |           25 |       1 |    1 |
+|  2 | Xavi Hernandez  | Spain       |                  5 |            2 |       2 |    2 |
+|  3 | Pep Guardiola   | Spain       |                 18 |           35 |       1 |    3 |
+|  4 | Jurgen Klopp    | Germany     |                 22 |           15 |       3 |    4 |
+|  5 | Thomas Tuchel   | Germany     |                 17 |           10 |       4 |    5 |
++----+-----------------+-------------+--------------------+--------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into matches
+    -> values
+    -> ( 1 , 1 , 2 , 3 , 2 , 10 , 5 , 2024 , 'Home Win' , 101 )
+    -> (2 , 3 , 4 , 2 , 1 , 15 , 5 , 2024 ,  'Home Win  , 106 ) ,
+    '> ;
+    '> ^C
+mysql>  insert into matches
+    -> values
+    ->  ( 1 , 1 , 2 , 3 , 2 , 10 , 5 , 2024 , 'Home Win' , 101 ) ,
+    -> (2 , 3 , 4 , 2 , 1 , 15 , 5 , 2024 ,  'Home Win'  , 106 ) ,
+    -> ( 3, 5 , 1, 1, 1 , 20 , 5 , 2024 , 'Draw' , 110 ) ,
+    -> (4, 2 , 3, 0 , 2 , 25 , 5 , 2024 , 'Away Win' , 105 ) ,
+    -> ( 5 , 4 , 5 , 2, 2 , 30 , 5 , 2024 , 'Draw' , 108 ) ;
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from matches ;
++----+-----------+-----------+---------+---------+------+-------+------+----------+------+
+| id | home_team | away_team | h_score | a_score | day  | month | year | result   | potm |
++----+-----------+-----------+---------+---------+------+-------+------+----------+------+
+|  1 |         1 |         2 |       3 |       2 |   10 |     5 | 2024 | Home Win |  101 |
+|  2 |         3 |         4 |       2 |       1 |   15 |     5 | 2024 | Home Win |  106 |
+|  3 |         5 |         1 |       1 |       1 |   20 |     5 | 2024 | Draw     |  110 |
+|  4 |         2 |         3 |       0 |       2 |   25 |     5 | 2024 | Away Win |  105 |
+|  5 |         4 |         5 |       2 |       2 |   30 |     5 | 2024 | Draw     |  108 |
++----+-----------+-----------+---------+---------+------+-------+------+----------+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into matches_details
+    -> values
+    -> ( 101 , 1 , 9.5 , 2, 1, 3 , 0 , 0 ) ,
+    -> ( 102 , 1, 8.8 , 1,1,4,1,0 ) ,
+    -> (104, 1, 8.2, 2, 0, 2, 0, 0),
+    -> (106, 2, 9.6, 2, 0, 3, 0, 0),
+    -> (105, 2, 8.9, 0, 2, 5, 2, 0),
+    -> (108, 5, 9.1, 1, 1, 3, 0, 0),
+    -> (110, 3, 9.0, 0, 0, 1, 0, 6),
+    -> (107, 2, 8.7, 0, 0, 1, 5, 0),
+    -> (103, 4, 8.5, 0, 1, 4, 2, 0),
+    -> (109, 3, 8.6, 1, 0, 3, 3, 0) ;
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from matches_details ;
++------+------+--------+------+--------+----------+------------+-------+
+| p_id | m_id | rating | goal | assist | key_pass | tackle_won | saves |
++------+------+--------+------+--------+----------+------------+-------+
+|  101 |    1 |    9.5 |    2 |      1 |        3 |          0 |     0 |
+|  102 |    1 |    8.8 |    1 |      1 |        4 |          1 |     0 |
+|  103 |    4 |    8.5 |    0 |      1 |        4 |          2 |     0 |
+|  104 |    1 |    8.2 |    2 |      0 |        2 |          0 |     0 |
+|  105 |    2 |    8.9 |    0 |      2 |        5 |          2 |     0 |
+|  106 |    2 |    9.6 |    2 |      0 |        3 |          0 |     0 |
+|  107 |    2 |    8.7 |    0 |      0 |        1 |          5 |     0 |
+|  108 |    5 |    9.1 |    1 |      1 |        3 |          0 |     0 |
+|  109 |    3 |    8.6 |    1 |      0 |        3 |          3 |     0 |
+|  110 |    3 |    9.0 |    0 |      0 |        1 |          0 |     6 |
++------+------+--------+------+--------+----------+------------+-------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> show tables;
++-----------------+
+| Tables_in_hp    |
++-----------------+
+| coach           |
+| matches         |
+| matches_details |
+| player          |
+| team            |
++-----------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from player ;
++-----+--------------------+-------------+---------+---------+------+
+| id  | name               | position    | ranking | team_id | age  |
++-----+--------------------+-------------+---------+---------+------+
+| 101 | Karim Benzema      | Forward     |      91 |       1 |   35 |
+| 102 | Vinicius Junior    | Forward     |      89 |       1 |   23 |
+| 103 | pedri              | Midfielder  |      87 |       2 |   21 |
+| 104 | Robert Lewandowski | Forward     |      90 |       2 |   35 |
+| 105 | Kevin De Bruyne    | Midifielder |      91 |       3 |   32 |
+| 106 | Erling Haaland     | Forward     |      92 |       3 |   24 |
+| 107 | Virgil van Dijk    | Defender    |      89 |       4 |   33 |
+| 108 | Mohamed Salah      | Forward     |      90 |       4 |   32 |
+| 109 | Joshua Kimmich     | Midfielder  |      89 |       5 |   29 |
+| 110 | Manuel Neuer       | Goalkeeper  |      90 |       5 |   38 |
++-----+--------------------+-------------+---------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from teams ;
+ERROR 1146 (42S02): Table 'hp.teams' doesn't exist
+mysql> select * form team ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form team' at line 1
+mysql> select * from team ;
++----+-----------------+---------+--------------+
+| id | name            | ranking | trophy_count |
++----+-----------------+---------+--------------+
+|  1 | Real Madrid     |       1 |           14 |
+|  2 | Barcelona       |       2 |            5 |
+|  3 | Manchester City |       3 |            1 |
+|  4 | Liverpool       |       4 |            6 |
+|  5 | Bayern Munich   |       5 |            6 |
++----+-----------------+---------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from coach ;
++----+-----------------+-------------+--------------------+--------------+---------+------+
+| id | name            | nationality | year_of_experience | trophy_count | ranking | t_id |
++----+-----------------+-------------+--------------------+--------------+---------+------+
+|  1 | Carlo Ancelotti | Italy       |                 28 |           25 |       1 |    1 |
+|  2 | Xavi Hernandez  | Spain       |                  5 |            2 |       2 |    2 |
+|  3 | Pep Guardiola   | Spain       |                 18 |           35 |       1 |    3 |
+|  4 | Jurgen Klopp    | Germany     |                 22 |           15 |       3 |    4 |
+|  5 | Thomas Tuchel   | Germany     |                 17 |           10 |       4 |    5 |
++----+-----------------+-------------+--------------------+--------------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * form matches ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form matches' at line 1
+mysql> select * from matches ;
++----+-----------+-----------+---------+---------+------+-------+------+----------+------+
+| id | home_team | away_team | h_score | a_score | day  | month | year | result   | potm |
++----+-----------+-----------+---------+---------+------+-------+------+----------+------+
+|  1 |         1 |         2 |       3 |       2 |   10 |     5 | 2024 | Home Win |  101 |
+|  2 |         3 |         4 |       2 |       1 |   15 |     5 | 2024 | Home Win |  106 |
+|  3 |         5 |         1 |       1 |       1 |   20 |     5 | 2024 | Draw     |  110 |
+|  4 |         2 |         3 |       0 |       2 |   25 |     5 | 2024 | Away Win |  105 |
+|  5 |         4 |         5 |       2 |       2 |   30 |     5 | 2024 | Draw     |  108 |
++----+-----------+-----------+---------+---------+------+-------+------+----------+------+
+5 rows in set (0.00 sec)
+
+mysql> show tables ;
++-----------------+
+| Tables_in_hp    |
++-----------------+
+| coach           |
+| matches         |
+| matches_details |
+| player          |
+| team            |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> name
+    -> from
+    -> player ;
++--------------------+
+| name               |
++--------------------+
+| Karim Benzema      |
+| Vinicius Junior    |
+| pedri              |
+| Robert Lewandowski |
+| Kevin De Bruyne    |
+| Erling Haaland     |
+| Virgil van Dijk    |
+| Mohamed Salah      |
+| Joshua Kimmich     |
+| Manuel Neuer       |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> name
+    -> from
+    ->  team ;
++-----------------+
+| name            |
++-----------------+
+| Real Madrid     |
+| Barcelona       |
+| Manchester City |
+| Liverpool       |
+| Bayern Munich   |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> name
+    -> form
+    ->  coach ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'coach' at line 4
+mysql> select
+    -> name
+    -> from
+    ->  coach ;
++-----------------+
+| name            |
++-----------------+
+| Carlo Ancelotti |
+| Xavi Hernandez  |
+| Pep Guardiola   |
+| Jurgen Klopp    |
+| Thomas Tuchel   |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> name , age
+    -> from
+    -> player ;
++--------------------+------+
+| name               | age  |
++--------------------+------+
+| Karim Benzema      |   35 |
+| Vinicius Junior    |   23 |
+| pedri              |   21 |
+| Robert Lewandowski |   35 |
+| Kevin De Bruyne    |   32 |
+| Erling Haaland     |   24 |
+| Virgil van Dijk    |   33 |
+| Mohamed Salah      |   32 |
+| Joshua Kimmich     |   29 |
+| Manuel Neuer       |   38 |
++--------------------+------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> name , ranking
+    -> from
+    -> team ;
++-----------------+---------+
+| name            | ranking |
++-----------------+---------+
+| Real Madrid     |       1 |
+| Barcelona       |       2 |
+| Manchester City |       3 |
+| Liverpool       |       4 |
+| Bayern Munich   |       5 |
++-----------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> name , nationality
+    -> from
+    -> coach ;
++-----------------+-------------+
+| name            | nationality |
++-----------------+-------------+
+| Carlo Ancelotti | Italy       |
+| Xavi Hernandez  | Spain       |
+| Pep Guardiola   | Spain       |
+| Jurgen Klopp    | Germany     |
+| Thomas Tuchel   | Germany     |
++-----------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> age
+    -> from
+    -> player
+    -> where
+    -> age > 25 ;
++------+
+| age  |
++------+
+|   35 |
+|   35 |
+|   32 |
+|   33 |
+|   32 |
+|   29 |
+|   38 |
++------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> age
+    -> from
+    -> player
+    -> where
+    -> age > 30 ;
++------+
+| age  |
++------+
+|   35 |
+|   35 |
+|   32 |
+|   33 |
+|   32 |
+|   38 |
++------+
+6 rows in set (0.00 sec)
+
+mysql> select
+    -> form
+    -> ;
+ERROR 1054 (42S22): Unknown column 'form' in 'field list'
+mysql> select
+    -> position
+    -> from
+    -> player
+    -> ;
++-------------+
+| position    |
++-------------+
+| Forward     |
+| Forward     |
+| Midfielder  |
+| Forward     |
+| Midifielder |
+| Forward     |
+| Defender    |
+| Forward     |
+| Midfielder  |
+| Goalkeeper  |
++-------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> position
+    -> from
+    -> player
+    -> where
+    -> forward ;
+ERROR 1054 (42S22): Unknown column 'forward' in 'where clause'
+mysql> select
+    -> position
+    -> from
+    -> player
+    -> where
+    -> position = forward ;
+ERROR 1054 (42S22): Unknown column 'forward' in 'where clause'
+mysql> select
+    -> position
+    -> from
+    -> player
+    -> where
+    -> position = 'Forward' ;
++----------+
+| position |
++----------+
+| Forward  |
+| Forward  |
+| Forward  |
+| Forward  |
+| Forward  |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> position
+    -> from
+    -> player
+    -> where
+    -> position = 'Midfielder' ;
++------------+
+| position   |
++------------+
+| Midfielder |
+| Midfielder |
++------------+
+2 rows in set (0.00 sec)
+
+mysql> select
+    -> position
+    -> form
+    -> player
+    -> where
+    -> position = 'Defender' ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'player
+where
+position = 'Defender'' at line 4
+mysql> select
+    -> Defender
+    -> ;
+ERROR 1054 (42S22): Unknown column 'Defender' in 'field list'
+mysql> select
+    -> position
+    -> from
+    -> player
+    -> where
+    -> position = 'Defender' ;
++----------+
+| position |
++----------+
+| Defender |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> position
+    -> from
+    -> player
+    -> where
+    -> position = 'goalkeepers'  ;
+Empty set (0.00 sec)
+
+mysql>
+mysql> select
+    -> ranking
+    -> from
+    -> team
+    -> where
+    -> renking < 10 ;
+ERROR 1054 (42S22): Unknown column 'renking' in 'where clause'
+mysql> select
+    -> ranking
+    -> from
+    -> team
+    -> where
+    -> ranking < 10 ;
++---------+
+| ranking |
++---------+
+|       1 |
+|       2 |
+|       3 |
+|       4 |
+|       5 |
++---------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> trophies
+    -> from
+    -> team
+    -> where
+    -> trophies > 3 ;
+ERROR 1054 (42S22): Unknown column 'trophies' in 'field list'
+mysql> select
+    -> trophy_count
+    -> from
+    -> team
+    -> where
+    -> trophy_count > 3 ;
++--------------+
+| trophy_count |
++--------------+
+|           14 |
+|            5 |
+|            6 |
+|            6 |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> ^C
+mysql> select
+    -> trophy_count
+    -> as
+    -> trophies
+    -> from
+    -> team
+    -> where
+    -> trophy_count > 3 ;
++----------+
+| trophies |
++----------+
+|       14 |
+|        5 |
+|        6 |
+|        6 |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> year_of_experience
+    -> as
+    -> experience
+    -> from
+    -> coach
+    -> where
+    -> year_of_experience > 10 ;
++------------+
+| experience |
++------------+
+|         28 |
+|         18 |
+|         22 |
+|         17 |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> nationality
+    -> from
+    -> coach
+    -> where
+    -> nationality = 'Brazil' ;
+Empty set (0.00 sec)
+
+mysql>
+mysql> select distinct
+    -> position
+    -> from
+    -> player ;
++-------------+
+| position    |
++-------------+
+| Forward     |
+| Midfielder  |
+| Midifielder |
+| Defender    |
+| Goalkeeper  |
++-------------+
+5 rows in set (0.00 sec)
+
+mysql> select distinct
+    -> nationality
+    -> from
+    -> coach;
++-------------+
+| nationality |
++-------------+
+| Italy       |
+| Spain       |
+| Germany     |
++-------------+
+3 rows in set (0.00 sec)
+
+mysql> select
+    -> distinct
+    -> ranking
+    -> from
+    -> team ;
++---------+
+| ranking |
++---------+
+|       1 |
+|       2 |
+|       3 |
+|       4 |
+|       5 |
++---------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> age
+    -> from
+    -> player
+    -> order by
+    -> age ;
++------+
+| age  |
++------+
+|   21 |
+|   23 |
+|   24 |
+|   29 |
+|   32 |
+|   32 |
+|   33 |
+|   35 |
+|   35 |
+|   38 |
++------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> age
+    -> from player
+    -> order by
+    -> age desc ;
++------+
+| age  |
++------+
+|   38 |
+|   35 |
+|   35 |
+|   33 |
+|   32 |
+|   32 |
+|   29 |
+|   24 |
+|   23 |
+|   21 |
++------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> ranking from
+    -> team
+    -> order by
+    -> ranking ;
++---------+
+| ranking |
++---------+
+|       1 |
+|       2 |
+|       3 |
+|       4 |
+|       5 |
++---------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> experience
+    -> from
+    -> coach
+    -> order by
+    -> experience ;
+ERROR 1054 (42S22): Unknown column 'experience' in 'field list'
+mysql> select
+    -> year_of_experience
+    -> as
+    -> experience
+    -> from
+    -> cexperience
+    -> ;
+ERROR 1146 (42S02): Table 'hp.cexperience' doesn't exist
+mysql> select
+    ->  year_of_experience
+    -> as
+    -> experience
+    -> from
+    -> Coach
+    -> order by
+    -> year_of_experience ;
++------------+
+| experience |
++------------+
+|          5 |
+|         17 |
+|         18 |
+|         22 |
+|         28 |
++------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> SELECT column_name(s)
+    -> FROM table_name
+    -> WHERE column_name operator ALL
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL' at line 2
+mysql> select
+    -> *
+    -> from
+    -> player
+    -> order by
+    -> name asc ;
++-----+--------------------+-------------+---------+---------+------+
+| id  | name               | position    | ranking | team_id | age  |
++-----+--------------------+-------------+---------+---------+------+
+| 106 | Erling Haaland     | Forward     |      92 |       3 |   24 |
+| 109 | Joshua Kimmich     | Midfielder  |      89 |       5 |   29 |
+| 101 | Karim Benzema      | Forward     |      91 |       1 |   35 |
+| 105 | Kevin De Bruyne    | Midifielder |      91 |       3 |   32 |
+| 110 | Manuel Neuer       | Goalkeeper  |      90 |       5 |   38 |
+| 108 | Mohamed Salah      | Forward     |      90 |       4 |   32 |
+| 103 | pedri              | Midfielder  |      87 |       2 |   21 |
+| 104 | Robert Lewandowski | Forward     |      90 |       2 |   35 |
+| 102 | Vinicius Junior    | Forward     |      89 |       1 |   23 |
+| 107 | Virgil van Dijk    | Defender    |      89 |       4 |   33 |
++-----+--------------------+-------------+---------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from player ;
++-----+--------------------+-------------+---------+---------+------+
+| id  | name               | position    | ranking | team_id | age  |
++-----+--------------------+-------------+---------+---------+------+
+| 101 | Karim Benzema      | Forward     |      91 |       1 |   35 |
+| 102 | Vinicius Junior    | Forward     |      89 |       1 |   23 |
+| 103 | pedri              | Midfielder  |      87 |       2 |   21 |
+| 104 | Robert Lewandowski | Forward     |      90 |       2 |   35 |
+| 105 | Kevin De Bruyne    | Midifielder |      91 |       3 |   32 |
+| 106 | Erling Haaland     | Forward     |      92 |       3 |   24 |
+| 107 | Virgil van Dijk    | Defender    |      89 |       4 |   33 |
+| 108 | Mohamed Salah      | Forward     |      90 |       4 |   32 |
+| 109 | Joshua Kimmich     | Midfielder  |      89 |       5 |   29 |
+| 110 | Manuel Neuer       | Goalkeeper  |      90 |       5 |   38 |
++-----+--------------------+-------------+---------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> name
+    -> from
+    -> player
+    -> where
+    -> name like 'A%' ;
+Empty set (0.00 sec)
+
+mysql> select
+    -> name
+    -> form
+    -> ;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select
+    -> name
+    -> from
+    -> player
+    -> where
+    -> name like '%n' ;
+Empty set (0.00 sec)
+
+mysql> select
+    -> name
+    -> from
+    -> player
+    -> where
+    -> name like 'r%a' ;
+Empty set (0.00 sec)
+
+mysql> select
+    -> name
+    -> from
+    -> coach
+    -> where
+    -> name like 'J%' ;
++--------------+
+| name         |
++--------------+
+| Jurgen Klopp |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> name
+    -> from
+    -> team
+    -> where
+    -> name like 'United' ;
+Empty set (0.00 sec)
+
+mysql>
+mysql> select
+    -> age
+    -> from playes
+    -> where
+    -> age between 20 and 30 ;
+ERROR 1146 (42S02): Table 'hp.playes' doesn't exist
+mysql> select age
+    -> from
+    -> Player
+    -> where
+    -> age between 20 and 30 ;
++------+
+| age  |
++------+
+|   23 |
+|   21 |
+|   24 |
+|   29 |
++------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> rank
+    -> from
+    -> player
+    -> where
+    -> nanking between 50 and 100 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from
+player
+where
+nanking between 50 and 100' at line 3
+mysql> select
+    -> name
+    -> as
+    -> Player_Name
+    -> from
+    -> player ;
++--------------------+
+| Player_Name        |
++--------------------+
+| Karim Benzema      |
+| Vinicius Junior    |
+| pedri              |
+| Robert Lewandowski |
+| Kevin De Bruyne    |
+| Erling Haaland     |
+| Virgil van Dijk    |
+| Mohamed Salah      |
+| Joshua Kimmich     |
+| Manuel Neuer       |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> select
+    -> name
+    -> as
+    -> Team_Name
+    -> from
+    -> team ;
++-----------------+
+| Team_Name       |
++-----------------+
+| Real Madrid     |
+| Barcelona       |
+| Manchester City |
+| Liverpool       |
+| Bayern Munich   |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> name
+    -> as
+    -> Coach_Name
+    -> from
+    -> coach ;
++-----------------+
+| Coach_Name      |
++-----------------+
+| Carlo Ancelotti |
+| Xavi Hernandez  |
+| Pep Guardiola   |
+| Jurgen Klopp    |
+| Thomas Tuchel   |
++-----------------+
+5 rows in set (0.02 sec)
+
+mysql> select
+    -> ranking
+    -> as
+    -> FIFA_Ranking
+    -> from
+    -> player
+    -> ;
++--------------+
+| FIFA_Ranking |
++--------------+
+|           91 |
+|           89 |
+|           87 |
+|           90 |
+|           91 |
+|           92 |
+|           89 |
+|           90 |
+|           89 |
+|           90 |
++--------------+
+10 rows in set (0.02 sec)
+
+mysql> select
+    -> name , age
+    -> as
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> select
+    -> Player_Name
+    -> age
+    -> as
+    -> Player_Age
+    -> from
+    -> player ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as
+Player_Age
+from
+player' at line 4
+mysql> select
+    -> name
+    -> as
+    -> Player_Name
+    -> age
+    -> as
+    -> Player_Age
+    -> from
+    -> player ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'age
+as
+Player_Age
+from
+player' at line 5
+mysql> selecr
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selecr' at line 1
+mysql> select
+    -> name
+    -> as
+    -> Player_Name ,
+    -> age
+    -> as
+    -> Player_Age
+    -> from
+    -> player ;
++--------------------+------------+
+| Player_Name        | Player_Age |
++--------------------+------------+
+| Karim Benzema      |         35 |
+| Vinicius Junior    |         23 |
+| pedri              |         21 |
+| Robert Lewandowski |         35 |
+| Kevin De Bruyne    |         32 |
+| Erling Haaland     |         24 |
+| Virgil van Dijk    |         33 |
+| Mohamed Salah      |         32 |
+| Joshua Kimmich     |         29 |
+| Manuel Neuer       |         38 |
++--------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> select
+    -> name
+    -> from
+    -> player
+    -> inner join
+    -> team
+    -> on
+    -> player.name = team.name ;
+ERROR 1052 (23000): Column 'name' in field list is ambiguous
+mysql> SELECT player.name AS player_name, team.name AS team_name
+    -> FROM player
+    -> INNER JOIN team
+    -> ON player.name = team.name;
+Empty set (0.00 sec)
+
+
+mysql> SELECT Player.name, Team.name
+    -> FROM Player
+    -> INNER JOIN Team
+    -> ON Player.team_id = Team.id;
++--------------------+-----------------+
+| name               | name            |
++--------------------+-----------------+
+| Karim Benzema      | Real Madrid     |
+| Vinicius Junior    | Real Madrid     |
+| pedri              | Barcelona       |
+| Robert Lewandowski | Barcelona       |
+| Kevin De Bruyne    | Manchester City |
+| Erling Haaland     | Manchester City |
+| Virgil van Dijk    | Liverpool       |
+| Mohamed Salah      | Liverpool       |
+| Joshua Kimmich     | Bayern Munich   |
+| Manuel Neuer       | Bayern Munich   |
++--------------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> player.name , team.name
+    -> from ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> select
+    -> team.name , player.name
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id ;
++-----------------+--------------------+
+| name            | name               |
++-----------------+--------------------+
+| Real Madrid     | Karim Benzema      |
+| Real Madrid     | Vinicius Junior    |
+| Barcelona       | pedri              |
+| Barcelona       | Robert Lewandowski |
+| Manchester City | Kevin De Bruyne    |
+| Manchester City | Erling Haaland     |
+| Liverpool       | Virgil van Dijk    |
+| Liverpool       | Mohamed Salah      |
+| Bayern Munich   | Joshua Kimmich     |
+| Bayern Munich   | Manuel Neuer       |
++-----------------+--------------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> team.ranking , player.name
+    -> from
+    -> team.ranking
+    -> inner join
+    -> player.name
+    -> on
+    -> team.id = player.team_id ;
+ERROR 1049 (42000): Unknown database 'team'
+mysql> select
+    -> team.ranking , player.name
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.ranking = player.team_id ;
++---------+--------------------+
+| ranking | name               |
++---------+--------------------+
+|       1 | Karim Benzema      |
+|       1 | Vinicius Junior    |
+|       2 | pedri              |
+|       2 | Robert Lewandowski |
+|       3 | Kevin De Bruyne    |
+|       3 | Erling Haaland     |
+|       4 | Virgil van Dijk    |
+|       4 | Mohamed Salah      |
+|       5 | Joshua Kimmich     |
+|       5 | Manuel Neuer       |
++---------+--------------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> player.name ,  Coach.trophy_count
+    -> from
+    -> player
+    -> inner join
+    -> coach
+    -> om
+    -> ;
+ERROR 1054 (42S22): Unknown column 'Coach.trophy_count' in 'field list'
+mysql> select
+    -> player.name , coach.trophy_count
+    -> from
+    -> player
+    -> inner join
+    -> coach
+    -> on
+    -> player.name = coach.t_id ;
+Empty set (0.00 sec)
+
+mysql> select
+    -> team.trophy_count , player.name
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.trophy_count  =  player.team_id ;
++--------------+-----------------+
+| trophy_count | name            |
++--------------+-----------------+
+|            5 | Joshua Kimmich  |
+|            5 | Manuel Neuer    |
+|            1 | Karim Benzema   |
+|            1 | Vinicius Junior |
++--------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> team.name , coach.name
+    -> from
+    -> team
+    -> inner join
+    -> coach
+    -> on
+    -> team.name = coach.t_id ;
+Empty set (0.00 sec)
+
+mysql> select
+    -> team.name , coach.name
+    -> from
+    -> team
+    -> inner join
+    -> coach'
+    '> ol';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''
+ol'' at line 6
+mysql> select
+    -> team.name , coach.name
+    -> from
+    -> team
+    -> inner join
+    -> coach
+    -> on
+    -> team.id = coach.id ;
++-----------------+-----------------+
+| name            | name            |
++-----------------+-----------------+
+| Real Madrid     | Carlo Ancelotti |
+| Barcelona       | Xavi Hernandez  |
+| Manchester City | Pep Guardiola   |
+| Liverpool       | Jurgen Klopp    |
+| Bayern Munich   | Thomas Tuchel   |
++-----------------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> team.name
+    -> as
+    -> team.name
+    -> ,
+    -> coach.name
+    -> as
+    -> coach.name
+    -> from
+    -> team
+    -> inner join
+    -> coach
+    -> on
+    -> team.id = coach.id ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.name
+,
+coach.name
+as
+coach.name
+from
+team
+inner join
+coach
+on
+team.id = coa' at line 4
+mysql> select
+    -> team.name as Team_Name , coach.name as ^C
+mysql> ;
+ERROR:
+No query specified
+
+mysql> select
+    -> team.name as Team_Name , coach.name as Coach_Name
+    -> from
+    -> team
+    -> inner join
+    -> coach
+    -> on
+    -> team.id = coach.id ;
++-----------------+-----------------+
+| Team_Name       | Coach_Name      |
++-----------------+-----------------+
+| Real Madrid     | Carlo Ancelotti |
+| Barcelona       | Xavi Hernandez  |
+| Manchester City | Pep Guardiola   |
+| Liverpool       | Jurgen Klopp    |
+| Bayern Munich   | Thomas Tuchel   |
++-----------------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> team.name as Team_Name , coach.nationality as Coach_Nationality
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = coach.id ;
+ERROR 1054 (42S22): Unknown column 'coach.nationality' in 'field list'
+mysql> select
+    -> team.name as Team_Name , coach.nationality as Coach_Nationality
+    -> from
+    -> team
+    -> inner join
+    -> coach
+    -> on
+    -> team.id = coach.id ;
++-----------------+-------------------+
+| Team_Name       | Coach_Nationality |
++-----------------+-------------------+
+| Real Madrid     | Italy             |
+| Barcelona       | Spain             |
+| Manchester City | Spain             |
+| Liverpool       | Germany           |
+| Bayern Munich   | Germany           |
++-----------------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> team.ranking as Team_Ranking , coach.name as Coach_Name
+    -> from
+    -> team
+    -> inner join
+    -> coach
+    -> on
+    -> team.id = coach.id ;
++--------------+-----------------+
+| Team_Ranking | Coach_Name      |
++--------------+-----------------+
+|            1 | Carlo Ancelotti |
+|            2 | Xavi Hernandez  |
+|            3 | Pep Guardiola   |
+|            4 | Jurgen Klopp    |
+|            5 | Thomas Tuchel   |
++--------------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> player.name as Player_Name , player.position as Player_Position , team.name as Team_Name
+    -> from
+    -> player
+    -> inner join
+    -> team
+    -> on
+    -> team.id = player.team_id ;
++--------------------+-----------------+-----------------+
+| Player_Name        | Player_Position | Team_Name       |
++--------------------+-----------------+-----------------+
+| Karim Benzema      | Forward         | Real Madrid     |
+| Vinicius Junior    | Forward         | Real Madrid     |
+| pedri              | Midfielder      | Barcelona       |
+| Robert Lewandowski | Forward         | Barcelona       |
+| Kevin De Bruyne    | Midifielder     | Manchester City |
+| Erling Haaland     | Forward         | Manchester City |
+| Virgil van Dijk    | Defender        | Liverpool       |
+| Mohamed Salah      | Forward         | Liverpool       |
+| Joshua Kimmich     | Midfielder      | Bayern Munich   |
+| Manuel Neuer       | Goalkeeper      | Bayern Munich   |
++--------------------+-----------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> player.age as Palyer_Age , team.name as Team_Name
+    -> from
+    -> player
+    -> inner join
+    -> team
+    -> on
+    -> team.id = player.team_id
+    -> where
+    -> player.age > 25 ;
++------------+-----------------+
+| Palyer_Age | Team_Name       |
++------------+-----------------+
+|         35 | Real Madrid     |
+|         35 | Barcelona       |
+|         32 | Manchester City |
+|         33 | Liverpool       |
+|         32 | Liverpool       |
+|         29 | Bayern Munich   |
+|         38 | Bayern Munich   |
++------------+-----------------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> team.name as Team_Name , Player.position as Player_Position
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id ;
++-----------------+-----------------+
+| Team_Name       | Player_Position |
++-----------------+-----------------+
+| Real Madrid     | Forward         |
+| Real Madrid     | Forward         |
+| Barcelona       | Midfielder      |
+| Barcelona       | Forward         |
+| Manchester City | Midifielder     |
+| Manchester City | Forward         |
+| Liverpool       | Defender        |
+| Liverpool       | Forward         |
+| Bayern Munich   | Midfielder      |
+| Bayern Munich   | Goalkeeper      |
++-----------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    ->  team.name as Team_Name , Player.position as Player_Position
+    -> from
+    ->  team
+    -> inner join
+    -> player
+    -> on
+    ->  team.id = player.team_id ;
++-----------------+-----------------+
+| Team_Name       | Player_Position |
++-----------------+-----------------+
+| Real Madrid     | Forward         |
+| Real Madrid     | Forward         |
+| Barcelona       | Midfielder      |
+| Barcelona       | Forward         |
+| Manchester City | Midifielder     |
+| Manchester City | Forward         |
+| Liverpool       | Defender        |
+| Liverpool       | Forward         |
+| Bayern Munich   | Midfielder      |
+| Bayern Munich   | Goalkeeper      |
++-----------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> team.name as Team_Name , Player.position as Player_Position
+    -> from
+    -> team
+    -> inner join
+    ->  player
+    -> on
+    ->  team.id = player.team_id
+    -> where
+    -> Player.position  = 'Forward' ;
++-----------------+-----------------+
+| Team_Name       | Player_Position |
++-----------------+-----------------+
+| Real Madrid     | Forward         |
+| Real Madrid     | Forward         |
+| Barcelona       | Forward         |
+| Manchester City | Forward         |
+| Liverpool       | Forward         |
++-----------------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> team.name as Team_Name , Player.position as Player_Position
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> where
+    ->  Player.position  = 'Defender' ;
++-----------+-----------------+
+| Team_Name | Player_Position |
++-----------+-----------------+
+| Liverpool | Defender        |
++-----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> team.name as Team_Name , Player.position as Player_Position
+    -> from
+    ->  team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> where
+    ->  Player.position  = 'Goalkeeper' ;
++---------------+-----------------+
+| Team_Name     | Player_Position |
++---------------+-----------------+
+| Bayern Munich | Goalkeeper      |
++---------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> team.name as Team_Name , Player.position as Player_Position
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> where
+    -> Player.position  = 'Midifielder' ;
++-----------------+-----------------+
+| Team_Name       | Player_Position |
++-----------------+-----------------+
+| Manchester City | Midifielder     |
++-----------------+-----------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT Player.name, Team.name
+    -> FROM Player
+    -> INNER JOIN Team
+    -> ON Player.team_id = Team.id
+    -> WHERE Team.trophy_count > 3;
++--------------------+---------------+
+| name               | name          |
++--------------------+---------------+
+| Karim Benzema      | Real Madrid   |
+| Vinicius Junior    | Real Madrid   |
+| pedri              | Barcelona     |
+| Robert Lewandowski | Barcelona     |
+| Virgil van Dijk    | Liverpool     |
+| Mohamed Salah      | Liverpool     |
+| Joshua Kimmich     | Bayern Munich |
+| Manuel Neuer       | Bayern Munich |
++--------------------+---------------+
+8 rows in set (0.00 sec)
+
+
+mysql> SELECT Coach.name, Team.name
+    -> FROM Coach
+    -> INNER JOIN Team
+    -> ON Coach.t_id = Team.id
+    -> WHERE Team.trophy_count > 5;
++-----------------+---------------+
+| name            | name          |
++-----------------+---------------+
+| Carlo Ancelotti | Real Madrid   |
+| Jurgen Klopp    | Liverpool     |
+| Thomas Tuchel   | Bayern Munich |
++-----------------+---------------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> select
+    -> team.name , player.name
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> where
+    -> player.age > 30 ;
++-----------------+--------------------+
+| name            | name               |
++-----------------+--------------------+
+| Real Madrid     | Karim Benzema      |
+| Barcelona       | Robert Lewandowski |
+| Manchester City | Kevin De Bruyne    |
+| Liverpool       | Virgil van Dijk    |
+| Liverpool       | Mohamed Salah      |
+| Bayern Munich   | Manuel Neuer       |
++-----------------+--------------------+
+6 rows in set (0.00 sec)
+
+mysql> select
+    -> team.name , player.position
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.name = player.team_id
+    -> where
+    -> player.position = 'Forward' ;
+Empty set, 5 warnings (0.00 sec)
+
+mysql> select
+    -> team.name , player.position
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> where
+    -> player.position = 'Forward' ;
++-----------------+----------+
+| name            | position |
++-----------------+----------+
+| Real Madrid     | Forward  |
+| Real Madrid     | Forward  |
+| Barcelona       | Forward  |
+| Manchester City | Forward  |
+| Liverpool       | Forward  |
++-----------------+----------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> select
+    -> home_team
+    -> from
+    ->  matches
+    -> ;
++-----------+
+| home_team |
++-----------+
+|         1 |
+|         3 |
+|         5 |
+|         2 |
+|         4 |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> away_team
+    -> from
+    -> matches
+    -> ;
++-----------+
+| away_team |
++-----------+
+|         2 |
+|         4 |
+|         1 |
+|         3 |
+|         5 |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> home_team , result
+    -> from
+    -> matches ;
++-----------+----------+
+| home_team | result   |
++-----------+----------+
+|         1 | Home Win |
+|         3 | Home Win |
+|         5 | Draw     |
+|         2 | Away Win |
+|         4 | Draw     |
++-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> away_team , result
+    -> from_t
+    -> l
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'l' at line 4
+mysql> select
+    -> away_team , result
+    -> from
+    -> matches ;
++-----------+----------+
+| away_team | result   |
++-----------+----------+
+|         2 | Home Win |
+|         4 | Home Win |
+|         1 | Draw     |
+|         3 | Away Win |
+|         5 | Draw     |
++-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select
+    -> home_team , away_team
+    -> from
+    ->  matches ;
++-----------+-----------+
+| home_team | away_team |
++-----------+-----------+
+|         1 |         2 |
+|         3 |         4 |
+|         5 |         1 |
+|         2 |         3 |
+|         4 |         5 |
++-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql>  select
+    -> player.name as Player_Name , matches_details.goal as Matches_Details_Goal
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+----------------------+
+| Player_Name        | Matches_Details_Goal |
++--------------------+----------------------+
+| Karim Benzema      |                    2 |
+| Vinicius Junior    |                    1 |
+| pedri              |                    0 |
+| Robert Lewandowski |                    2 |
+| Kevin De Bruyne    |                    0 |
+| Erling Haaland     |                    2 |
+| Virgil van Dijk    |                    0 |
+| Mohamed Salah      |                    1 |
+| Joshua Kimmich     |                    1 |
+| Manuel Neuer       |                    0 |
++--------------------+----------------------+
+10 rows in set (0.01 sec)
+
+mysql> select
+    -> assist
+    -> from
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> select
+    -> player.name as Player_Name , matches_details.assist as Matches_Details.Assist
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.Assist
+from
+player
+inner join
+matches_details
+on
+player.id = matches_detail' at line 2
+mysql> select
+    -> player.name as Player_Name , matches_details.assist as Matches_Details_Assist
+    ->  from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+------------------------+
+| Player_Name        | Matches_Details_Assist |
++--------------------+------------------------+
+| Karim Benzema      |                      1 |
+| Vinicius Junior    |                      1 |
+| pedri              |                      1 |
+| Robert Lewandowski |                      0 |
+| Kevin De Bruyne    |                      2 |
+| Erling Haaland     |                      0 |
+| Virgil van Dijk    |                      0 |
+| Mohamed Salah      |                      1 |
+| Joshua Kimmich     |                      0 |
+| Manuel Neuer       |                      0 |
++--------------------+------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    ->  player.name as Player_Name , matches_details.rating as Matches_Details_Rating
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+------------------------+
+| Player_Name        | Matches_Details_Rating |
++--------------------+------------------------+
+| Karim Benzema      |                    9.5 |
+| Vinicius Junior    |                    8.8 |
+| pedri              |                    8.5 |
+| Robert Lewandowski |                    8.2 |
+| Kevin De Bruyne    |                    8.9 |
+| Erling Haaland     |                    9.6 |
+| Virgil van Dijk    |                    8.7 |
+| Mohamed Salah      |                    9.1 |
+| Joshua Kimmich     |                    8.6 |
+| Manuel Neuer       |                    9.0 |
++--------------------+------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> player.name as Player_Name , matches_details.key_pass as Matches_Details_Key_Pass
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+--------------------------+
+| Player_Name        | Matches_Details_Key_Pass |
++--------------------+--------------------------+
+| Karim Benzema      |                        3 |
+| Vinicius Junior    |                        4 |
+| pedri              |                        4 |
+| Robert Lewandowski |                        2 |
+| Kevin De Bruyne    |                        5 |
+| Erling Haaland     |                        3 |
+| Virgil van Dijk    |                        1 |
+| Mohamed Salah      |                        3 |
+| Joshua Kimmich     |                        3 |
+| Manuel Neuer       |                        1 |
++--------------------+--------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> player.name as Player_Name , matches_details.tackle_won as  Matches_Details_Tackle_Won
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+----------------------------+
+| Player_Name        | Matches_Details_Tackle_Won |
++--------------------+----------------------------+
+| Karim Benzema      |                          0 |
+| Vinicius Junior    |                          1 |
+| pedri              |                          2 |
+| Robert Lewandowski |                          0 |
+| Kevin De Bruyne    |                          2 |
+| Erling Haaland     |                          0 |
+| Virgil van Dijk    |                          5 |
+| Mohamed Salah      |                          0 |
+| Joshua Kimmich     |                          3 |
+| Manuel Neuer       |                          0 |
++--------------------+----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> player.name as Player_Name , matches_details.saves as Matches_Details_Save
+    -> from
+    ->  player
+    ->  inner join
+    -> matches_details
+    -> on
+    ->  player.id = matches_details.p_id ;
++--------------------+----------------------+
+| Player_Name        | Matches_Details_Save |
++--------------------+----------------------+
+| Karim Benzema      |                    0 |
+| Vinicius Junior    |                    0 |
+| pedri              |                    0 |
+| Robert Lewandowski |                    0 |
+| Kevin De Bruyne    |                    0 |
+| Erling Haaland     |                    0 |
+| Virgil van Dijk    |                    0 |
+| Mohamed Salah      |                    0 |
+| Joshua Kimmich     |                    0 |
+| Manuel Neuer       |                    6 |
++--------------------+----------------------+
+10 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select
+    -> team.name as Team_Name , player.name as Player_Name , coach.name as Coach_Name
+    -> from
+    -> team.name as Team_Name , player.name as Player_Name , coach.name as Coach_Name ;
+ERROR 1049 (42000): Unknown database 'team'
+mysql> select
+    -> team.name as Team_Name , player.name as Player_Name , coach.name as Coach_Name
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> inner join
+    -> team.name as Team_Name , player.name as Player_Name , coach.name as Coach_Name
+    ->
+    -> ;
+ERROR 1049 (42000): Unknown database 'team'
+mysql> select
+    -> team.name as Team_Name , player.name as Player_Name , coach.name as Coach_Name
+    -> from
+    -> team
+    -> inner join
+    ->  player
+    -> inner join
+    -> ^C
+mysql> select
+    -> team.name as Team_Name , player.name as Player_Name , coach.name as Coach_Name
+    -> from
+    -> team
+    ->  inner join
+    ->  player
+    -> inner join
+    -> coach
+    -> on
+    -> team.id =  player.team_id =  Coach.id ;
++-----------------+--------------------+-----------------+
+| Team_Name       | Player_Name        | Coach_Name      |
++-----------------+--------------------+-----------------+
+| Real Madrid     | Karim Benzema      | Carlo Ancelotti |
+| Real Madrid     | Vinicius Junior    | Carlo Ancelotti |
+| Barcelona       | pedri              | Carlo Ancelotti |
+| Barcelona       | Robert Lewandowski | Carlo Ancelotti |
+| Manchester City | Kevin De Bruyne    | Carlo Ancelotti |
+| Manchester City | Erling Haaland     | Carlo Ancelotti |
+| Liverpool       | Virgil van Dijk    | Carlo Ancelotti |
+| Liverpool       | Mohamed Salah      | Carlo Ancelotti |
+| Bayern Munich   | Joshua Kimmich     | Carlo Ancelotti |
+| Bayern Munich   | Manuel Neuer       | Carlo Ancelotti |
++-----------------+--------------------+-----------------+
+10 rows in set (0.00 sec)
+
+mysql>
+
+mysql> SELECT Player.name, Match_details.m_id
+    -> FROM Player
+    -> INNER JOIN Match_details
+    -> ON Player.id = Match_details.p_id;
+ERROR 1146 (42S02): Table 'hp.match_details' doesn't exist
+mysql> SELECT Player.name, matches_details.m_id
+    -> FROM Player
+    -> INNER JOIN matches_details
+    -> ON Player.id = matches_details.p_id;
++--------------------+------+
+| name               | m_id |
++--------------------+------+
+| Karim Benzema      |    1 |
+| Vinicius Junior    |    1 |
+| pedri              |    4 |
+| Robert Lewandowski |    1 |
+| Kevin De Bruyne    |    2 |
+| Erling Haaland     |    2 |
+| Virgil van Dijk    |    2 |
+| Mohamed Salah      |    5 |
+| Joshua Kimmich     |    3 |
+| Manuel Neuer       |    3 |
++--------------------+------+
+10 rows in set (0.00 sec)
+
+
+mysql> select
+    -> player.name , matches_details.rating
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = Matches_details.p_id ;
++--------------------+--------+
+| name               | rating |
++--------------------+--------+
+| Karim Benzema      |    9.5 |
+| Vinicius Junior    |    8.8 |
+| pedri              |    8.5 |
+| Robert Lewandowski |    8.2 |
+| Kevin De Bruyne    |    8.9 |
+| Erling Haaland     |    9.6 |
+| Virgil van Dijk    |    8.7 |
+| Mohamed Salah      |    9.1 |
+| Joshua Kimmich     |    8.6 |
+| Manuel Neuer       |    9.0 |
++--------------------+--------+
+10 rows in set (0.00 sec)
+
+
+mysql> select
+    -> player.name , matches_details.goal , matches_details.assist
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = Matches_details.p_id ;
++--------------------+------+--------+
+| name               | goal | assist |
++--------------------+------+--------+
+| Karim Benzema      |    2 |      1 |
+| Vinicius Junior    |    1 |      1 |
+| pedri              |    0 |      1 |
+| Robert Lewandowski |    2 |      0 |
+| Kevin De Bruyne    |    0 |      2 |
+| Erling Haaland     |    2 |      0 |
+| Virgil van Dijk    |    0 |      0 |
+| Mohamed Salah      |    1 |      1 |
+| Joshua Kimmich     |    1 |      0 |
+| Manuel Neuer       |    0 |      0 |
++--------------------+------+--------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Player.name, matches_details.rating, Team.name
+    -> FROM Player
+    -> INNER JOIN matches_details
+    -> ON Player.id = matches_details.p_id
+    -> INNER JOIN Team
+    -> ON Player.team_id = Team.id;
++--------------------+--------+-----------------+
+| name               | rating | name            |
++--------------------+--------+-----------------+
+| Karim Benzema      |    9.5 | Real Madrid     |
+| Vinicius Junior    |    8.8 | Real Madrid     |
+| pedri              |    8.5 | Barcelona       |
+| Robert Lewandowski |    8.2 | Barcelona       |
+| Kevin De Bruyne    |    8.9 | Manchester City |
+| Erling Haaland     |    9.6 | Manchester City |
+| Virgil van Dijk    |    8.7 | Liverpool       |
+| Mohamed Salah      |    9.1 | Liverpool       |
+| Joshua Kimmich     |    8.6 | Bayern Munich   |
+| Manuel Neuer       |    9.0 | Bayern Munich   |
++--------------------+--------+-----------------+
+10 rows in set (0.00 sec)
+
+
+mysql> select
+    -> team.name , player.name , matches_details.rating
+    -> from
+    -> team
+    -> inner join
+    ->  player
+    -> on
+    -> team.id = player.team_id
+    -> inner join
+    ->  matches_details
+    -> on
+    -> player.id =  matches_details.p_id ;
++-----------------+--------------------+--------+
+| name            | name               | rating |
++-----------------+--------------------+--------+
+| Real Madrid     | Karim Benzema      |    9.5 |
+| Real Madrid     | Vinicius Junior    |    8.8 |
+| Barcelona       | pedri              |    8.5 |
+| Barcelona       | Robert Lewandowski |    8.2 |
+| Manchester City | Kevin De Bruyne    |    8.9 |
+| Manchester City | Erling Haaland     |    9.6 |
+| Liverpool       | Virgil van Dijk    |    8.7 |
+| Liverpool       | Mohamed Salah      |    9.1 |
+| Bayern Munich   | Joshua Kimmich     |    8.6 |
+| Bayern Munich   | Manuel Neuer       |    9.0 |
++-----------------+--------------------+--------+
+10 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> select
+    -> team.name , player.name , matches_details.goal
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    ->  team.id = player.team_id
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++-----------------+--------------------+------+
+| name            | name               | goal |
++-----------------+--------------------+------+
+| Real Madrid     | Karim Benzema      |    2 |
+| Real Madrid     | Vinicius Junior    |    1 |
+| Barcelona       | pedri              |    0 |
+| Barcelona       | Robert Lewandowski |    2 |
+| Manchester City | Kevin De Bruyne    |    0 |
+| Manchester City | Erling Haaland     |    2 |
+| Liverpool       | Virgil van Dijk    |    0 |
+| Liverpool       | Mohamed Salah      |    1 |
+| Bayern Munich   | Joshua Kimmich     |    1 |
+| Bayern Munich   | Manuel Neuer       |    0 |
++-----------------+--------------------+------+
+10 rows in set (0.00 sec)
+
+
+ysql> select
+    -> player.name , team.name , matches_details.assist
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> inner join
+    ->  matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+-----------------+--------+
+| name               | name            | assist |
++--------------------+-----------------+--------+
+| Karim Benzema      | Real Madrid     |      1 |
+| Vinicius Junior    | Real Madrid     |      1 |
+| pedri              | Barcelona       |      1 |
+| Robert Lewandowski | Barcelona       |      0 |
+| Kevin De Bruyne    | Manchester City |      2 |
+| Erling Haaland     | Manchester City |      0 |
+| Virgil van Dijk    | Liverpool       |      0 |
+| Mohamed Salah      | Liverpool       |      1 |
+| Joshua Kimmich     | Bayern Munich   |      0 |
+| Manuel Neuer       | Bayern Munich   |      0 |
++--------------------+-----------------+--------+
+10 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select
+    -> player.name , team.name , matches_details.key_pass
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> inner join
+    -> matches_details
+    -> on
+    ->  player.id = matches_details.p_id ;
++--------------------+-----------------+----------+
+| name               | name            | key_pass |
++--------------------+-----------------+----------+
+| Karim Benzema      | Real Madrid     |        3 |
+| Vinicius Junior    | Real Madrid     |        4 |
+| pedri              | Barcelona       |        4 |
+| Robert Lewandowski | Barcelona       |        2 |
+| Kevin De Bruyne    | Manchester City |        5 |
+| Erling Haaland     | Manchester City |        3 |
+| Virgil van Dijk    | Liverpool       |        1 |
+| Mohamed Salah      | Liverpool       |        3 |
+| Joshua Kimmich     | Bayern Munich   |        3 |
+| Manuel Neuer       | Bayern Munich   |        1 |
++--------------------+-----------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> matches_details.saves , player.name
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    ->  player.id = matches_details.p_id
+    -> where
+    -> player.position = 'Goalkeeper'    ;
++-------+--------------+
+| saves | name         |
++-------+--------------+
+|     6 | Manuel Neuer |
++-------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> team.name , player.name , matches_details.goal
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id
+    -> where
+    -> matches_details.goal > 1 ;
++-----------------+--------------------+------+
+| name            | name               | goal |
++-----------------+--------------------+------+
+| Real Madrid     | Karim Benzema      |    2 |
+| Barcelona       | Robert Lewandowski |    2 |
+| Manchester City | Erling Haaland     |    2 |
++-----------------+--------------------+------+
+3 rows in set (0.00 sec)
+
+
+mysql> select
+    -> player.name , matches_details.goal
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id
+    -> where
+    -> matches_details.goal > 0 ;
++--------------------+------+
+| name               | goal |
++--------------------+------+
+| Karim Benzema      |    2 |
+| Vinicius Junior    |    1 |
+| Robert Lewandowski |    2 |
+| Erling Haaland     |    2 |
+| Mohamed Salah      |    1 |
+| Joshua Kimmich     |    1 |
++--------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select player.name , matches_details.tackle_won
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+------------+
+| name               | tackle_won |
++--------------------+------------+
+| Karim Benzema      |          0 |
+| Vinicius Junior    |          1 |
+| pedri              |          2 |
+| Robert Lewandowski |          0 |
+| Kevin De Bruyne    |          2 |
+| Erling Haaland     |          0 |
+| Virgil van Dijk    |          5 |
+| Mohamed Salah      |          0 |
+| Joshua Kimmich     |          3 |
+| Manuel Neuer       |          0 |
++--------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select player.name , matches_details.tackle_won
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id
+    -> where
+    -> matches_details.tackle_won > 0 ;
++-----------------+------------+
+| name            | tackle_won |
++-----------------+------------+
+| Vinicius Junior |          1 |
+| pedri           |          2 |
+| Kevin De Bruyne |          2 |
+| Virgil van Dijk |          5 |
+| Joshua Kimmich  |          3 |
++-----------------+------------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> select
+    -> player.name , matches_details.assist
+    -> from
+    -> player
+    -> inner join
+    ->  matches_details
+    -> on
+    -> player.id = matches_details.p_id
+    -> where
+    -> Player.position = 'Midifielder' ;
++-----------------+--------+
+| name            | assist |
++-----------------+--------+
+| Kevin De Bruyne |      2 |
++-----------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> player.name , matches_details.assist
+    -> from
+    -> player
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id
+    -> where
+    -> Player.position = 'Midifielder'
+    -> and
+    -> matches_details.assist > 0 ;
++-----------------+--------+
+| name            | assist |
++-----------------+--------+
+| Kevin De Bruyne |      2 |
++-----------------+--------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> player.name ,  coach.name , matches_details.rating
+    -> from
+    -> player
+    -> inner join
+    -> coach
+    -> on
+    -> player.team_id = coach.t_id
+    -> inner join
+    ->  matches_details
+    -> on
+    -> player.id = matches_details.p_id
+    -> ;
++--------------------+-----------------+--------+
+| name               | name            | rating |
++--------------------+-----------------+--------+
+| Karim Benzema      | Carlo Ancelotti |    9.5 |
+| Vinicius Junior    | Carlo Ancelotti |    8.8 |
+| pedri              | Xavi Hernandez  |    8.5 |
+| Robert Lewandowski | Xavi Hernandez  |    8.2 |
+| Kevin De Bruyne    | Pep Guardiola   |    8.9 |
+| Erling Haaland     | Pep Guardiola   |    9.6 |
+| Virgil van Dijk    | Jurgen Klopp    |    8.7 |
+| Mohamed Salah      | Jurgen Klopp    |    9.1 |
+| Joshua Kimmich     | Thomas Tuchel   |    8.6 |
+| Manuel Neuer       | Thomas Tuchel   |    9.0 |
++--------------------+-----------------+--------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> player.name , team.name , coach.name , matches_details.p_id
+    -> from
+    -> team
+    -> inner join
+    -> player
+    -> on
+    -> team.id = player.team_id
+    -> inner join
+    ->  coach
+    -> on
+    -> team.id = coach.id
+    -> inner join
+    -> matches_details
+    -> on
+    -> player.id = matches_details.p_id ;
++--------------------+-----------------+-----------------+------+
+| name               | name            | name            | p_id |
++--------------------+-----------------+-----------------+------+
+| Karim Benzema      | Real Madrid     | Carlo Ancelotti |  101 |
+| Vinicius Junior    | Real Madrid     | Carlo Ancelotti |  102 |
+| pedri              | Barcelona       | Xavi Hernandez  |  103 |
+| Robert Lewandowski | Barcelona       | Xavi Hernandez  |  104 |
+| Kevin De Bruyne    | Manchester City | Pep Guardiola   |  105 |
+| Erling Haaland     | Manchester City | Pep Guardiola   |  106 |
+| Virgil van Dijk    | Liverpool       | Jurgen Klopp    |  107 |
+| Mohamed Salah      | Liverpool       | Jurgen Klopp    |  108 |
+| Joshua Kimmich     | Bayern Munich   | Thomas Tuchel   |  109 |
+| Manuel Neuer       | Bayern Munich   | Thomas Tuchel   |  110 |
++--------------------+-----------------+-----------------+------+
+10 rows in set (0.00 sec)
+
+mysql>
