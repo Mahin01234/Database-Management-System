@@ -1,0 +1,2570 @@
+Microsoft Windows [Version 10.0.26100.8875]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\DELL>mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases ;
++--------------------------+
+| Database                 |
++--------------------------+
+| hp                       |
+| information_schema       |
+| labour_management_system |
+| mysql                    |
+| performance_schema       |
+| sys                      |
++--------------------------+
+6 rows in set (0.02 sec)
+
+mysql> create database hp1 ;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases ;
++--------------------------+
+| Database                 |
++--------------------------+
+| hp                       |
+| hp1                      |
+| information_schema       |
+| labour_management_system |
+| mysql                    |
+| performance_schema       |
+| sys                      |
++--------------------------+
+7 rows in set (0.02 sec)
+
+mysql> use hp1 ;
+Database changed
+mysql> create table Department
+    -> (
+    -> id int primary key ,
+    -> name varchar (50) ,
+    -> location varchar (50)
+    -> ) ;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into Department
+    -> values
+    -> ( 1 , 'IT' , 'Dhaka' ) ,
+    -> ( 2 , 'HR' , 'Dhaka' ) ,
+    -> (3, 'Finance' , 'Chittagong' ) ,
+    -> (4, 'Marketing', 'Rajshahi'),
+    -> (5, 'Sales', 'Khulna'),
+    -> (6, 'Research', 'Sylhet'),
+    -> (7, 'Training', 'Barisal')  ;
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select * from Department ;
++----+-----------+------------+
+| id | name      | location   |
++----+-----------+------------+
+|  1 | IT        | Dhaka      |
+|  2 | HR        | Dhaka      |
+|  3 | Finance   | Chittagong |
+|  4 | Marketing | Rajshahi   |
+|  5 | Sales     | Khulna     |
+|  6 | Research  | Sylhet     |
+|  7 | Training  | Barisal    |
++----+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> create table Employee
+    -> (
+    ->  name VARCHAR(50) ,
+    -> age INT,
+    ->     salary DECIMAL(10,2),
+    -> email VARCHAR(100) ,
+    -> department_id INT,
+    -> FOREIGN KEY (department_id) REFERENCES Department(id)
+    -> ) ;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO Employee VALUES
+    -> (101, 'Rahim', 25, 45000, 'rahim@gmail.com', 1),
+    -> (102, 'Karim', 28, 55000, 'karim@gmail.com', 1),
+    -> (103, 'Sakib', 30, 65000, 'sakib@gmail.com', 2),
+    -> (104, 'Nadia', 24, 40000, 'nadia@gmail.com', 3),
+    -> (105, 'Mim', 27, 70000, 'mim@gmail.com', 1),
+    -> (106, 'Hasan', 32, 85000, 'hasan@gmail.com', 4),
+    -> (107, 'Jannat', 23, 35000, 'jannat@gmail.com', 5),
+    -> (108, 'Rafi', 29, 60000, 'rafi@gmail.com', 6),
+    -> (109, 'Tania', 26, 50000, NULL, 2),
+    -> (110, 'Arif', 35, 90000, 'arif@gmail.com', 3),
+    -> (111, 'Mahin', 22, 30000, NULL, 1),
+    -> (112, 'Sumaiya', 31, 75000, 'sumaiya@gmail.com', 4),
+    -> (113, 'Ayan', 27, 48000, 'ayan@gmail.com', NULL) ;
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> create table Employee
+    -> (
+    -> id INT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     age INT,
+    ->     salary DECIMAL(10,2),
+    ->     email VARCHAR(100) UNIQUE,
+    ->     department_id INT,
+    ->     FOREIGN KEY (department_id) REFERENCES Department(id)
+    -> ) ;
+ERROR 1050 (42S01): Table 'employee' already exists
+mysql> drop table  Employee
+    -> ;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table Employee
+    -> (
+    -> id INT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     age INT,
+    ->     salary DECIMAL(10,2),
+    ->     email VARCHAR(100) UNIQUE,
+    ->     department_id INT,
+    ->     FOREIGN KEY (department_id) REFERENCES Department(id)
+    -> ) ;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO Employee VALUES
+    ->     -> (101, 'Rahim', 25, 45000, 'rahim@gmail.com', 1),
+    ->     -> (102, 'Karim', 28, 55000, 'karim@gmail.com', 1),
+    ->     -> (103, 'Sakib', 30, 65000, 'sakib@gmail.com', 2),
+    ->     -> (104, 'Nadia', 24, 40000, 'nadia@gmail.com', 3),
+    ->     -> (105, 'Mim', 27, 70000, 'mim@gmail.com', 1),
+    ->     -> (106, 'Hasan', 32, 85000, 'hasan@gmail.com', 4),
+    ->     -> (107, 'Jannat', 23, 35000, 'jannat@gmail.com', 5),
+    ->     -> (108, 'Rafi', 29, 60000, 'rafi@gmail.com', 6),
+    ->     -> (109, 'Tania', 26, 50000, NULL, 2),
+    ->     -> (110, 'Arif', 35, 90000, 'arif@gmail.com', 3),
+    ->     -> (111, 'Mahin', 22, 30000, NULL, 1),
+    ->     -> (112, 'Sumaiya', 31, 75000, 'sumaiya@gmail.com', 4),
+    ->     -> (113, 'Ayan', 27, 48000, 'ayan@gmail.com', NULL) ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> (101, 'Rahim', 25, 45000, 'rahim@gmail.com', 1),
+    -> (102, 'Karim', 28, 55' at line 2
+mysql> drop values Employee ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values Employee' at line 1
+mysql> INSERT INTO Employee VALUES
+    -> (101, 'Rahim', 25, 45000, 'rahim@gmail.com', 1),
+    -> (102, 'Karim', 28, 55000, 'karim@gmail.com', 1),
+    -> (103, 'Sakib', 30, 65000, 'sakib@gmail.com', 2),
+    -> (104, 'Nadia', 24, 40000, 'nadia@gmail.com', 3),
+    -> (105, 'Mim', 27, 70000, 'mim@gmail.com', 1),
+    -> (106, 'Hasan', 32, 85000, 'hasan@gmail.com', 4),
+    -> (107, 'Jannat', 23, 35000, 'jannat@gmail.com', 5),
+    -> (108, 'Rafi', 29, 60000, 'rafi@gmail.com', 6),
+    -> (109, 'Tania', 26, 50000, NULL, 2),
+    -> (110, 'Arif', 35, 90000, 'arif@gmail.com', 3),
+    -> (111, 'Mahin', 22, 30000, NULL, 1),
+    -> (112, 'Sumaiya', 31, 75000, 'sumaiya@gmail.com', 4),
+    -> (113, 'Ayan', 27, 48000, 'ayan@gmail.com', NULL);
+Query OK, 13 rows affected (0.00 sec)
+Records: 13  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> select * from Employee ;
++-----+---------+------+----------+-------------------+---------------+
+| id  | name    | age  | salary   | email             | department_id |
++-----+---------+------+----------+-------------------+---------------+
+| 101 | Rahim   |   25 | 45000.00 | rahim@gmail.com   |             1 |
+| 102 | Karim   |   28 | 55000.00 | karim@gmail.com   |             1 |
+| 103 | Sakib   |   30 | 65000.00 | sakib@gmail.com   |             2 |
+| 104 | Nadia   |   24 | 40000.00 | nadia@gmail.com   |             3 |
+| 105 | Mim     |   27 | 70000.00 | mim@gmail.com     |             1 |
+| 106 | Hasan   |   32 | 85000.00 | hasan@gmail.com   |             4 |
+| 107 | Jannat  |   23 | 35000.00 | jannat@gmail.com  |             5 |
+| 108 | Rafi    |   29 | 60000.00 | rafi@gmail.com    |             6 |
+| 109 | Tania   |   26 | 50000.00 | NULL              |             2 |
+| 110 | Arif    |   35 | 90000.00 | arif@gmail.com    |             3 |
+| 111 | Mahin   |   22 | 30000.00 | NULL              |             1 |
+| 112 | Sumaiya |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+| 113 | Ayan    |   27 | 48000.00 | ayan@gmail.com    |          NULL |
++-----+---------+------+----------+-------------------+---------------+
+13 rows in set (0.00 sec) 
+
+
+mysql> CREATE TABLE Customer (
+    ->     id INT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     city VARCHAR(50),
+    ->     email VARCHAR(100) UNIQUE,
+    ->     phone VARCHAR(20)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO Customer VALUES
+    -> (1, 'Abir', 'Dhaka', 'abir@gmail.com', '01711111111'),
+    -> (2, 'Nusrat', 'Chittagong', 'nusrat@gmail.com', '01722222222'),
+    -> (3, 'Siam', 'Dhaka', 'siam@gmail.com', NULL),
+    -> (4, 'Mitu', 'Rajshahi', 'mitu@gmail.com', '01744444444'),
+    -> (5, 'Riad', 'Khulna', 'riad@gmail.com', '01755555555'),
+    -> (6, 'Arafat', 'Dhaka', 'arafat@gmail.com', NULL),
+    -> (7, 'Tanjim', 'Sylhet', 'tanjim@gmail.com', '01777777777'),
+    -> (8, 'Mahi', 'Dhaka', 'mahi@gmail.com', '01788888888'),
+    -> (9, 'Sadia', 'Chittagong', 'sadia@gmail.com', NULL),
+    -> (10, 'Fahim', 'Barisal', 'fahim@gmail.com', '01710101010'),
+    -> (11, 'Rima', 'Dhaka', 'rima@gmail.com', '01712121212'),
+    -> (12, 'Nayeem', 'Comilla', 'nayeem@gmail.com', NULL),
+    -> (13, 'Ayesha', 'Dhaka', 'ayesha@gmail.com', '01713131313');
+Query OK, 13 rows affected (0.00 sec)
+Records: 13  Duplicates: 0  Warnings: 0
+
+mysql> select * from  Customer ;
++----+--------+------------+------------------+-------------+
+| id | name   | city       | email            | phone       |
++----+--------+------------+------------------+-------------+
+|  1 | Abir   | Dhaka      | abir@gmail.com   | 01711111111 |
+|  2 | Nusrat | Chittagong | nusrat@gmail.com | 01722222222 |
+|  3 | Siam   | Dhaka      | siam@gmail.com   | NULL        |
+|  4 | Mitu   | Rajshahi   | mitu@gmail.com   | 01744444444 |
+|  5 | Riad   | Khulna     | riad@gmail.com   | 01755555555 |
+|  6 | Arafat | Dhaka      | arafat@gmail.com | NULL        |
+|  7 | Tanjim | Sylhet     | tanjim@gmail.com | 01777777777 |
+|  8 | Mahi   | Dhaka      | mahi@gmail.com   | 01788888888 |
+|  9 | Sadia  | Chittagong | sadia@gmail.com  | NULL        |
+| 10 | Fahim  | Barisal    | fahim@gmail.com  | 01710101010 |
+| 11 | Rima   | Dhaka      | rima@gmail.com   | 01712121212 |
+| 12 | Nayeem | Comilla    | nayeem@gmail.com | NULL        |
+| 13 | Ayesha | Dhaka      | ayesha@gmail.com | 01713131313 |
++----+--------+------------+------------------+-------------+
+13 rows in set (0.00 sec)
+
+mysql>
+
+mysql> CREATE TABLE Category (
+    ->     id INT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL UNIQUE
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO Category VALUES
+    -> (1, 'Mobile'),
+    -> (2, 'Laptop'),
+    -> (3, 'Tablet'),
+    -> (4, 'Accessories'),
+    -> (5, 'Monitor'),
+    -> (6, 'Camera');
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from Category ;
++----+-------------+
+| id | name        |
++----+-------------+
+|  4 | Accessories |
+|  6 | Camera      |
+|  2 | Laptop      |
+|  1 | Mobile      |
+|  5 | Monitor     |
+|  3 | Tablet      |
++----+-------------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+mysql>
+mysql> CREATE TABLE Product (
+    ->     id INT PRIMARY KEY,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     price DECIMAL(10,2),
+    ->     quantity INT,
+    ->     category_id INT,
+    ->     FOREIGN KEY (category_id) REFERENCES Category(id)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO Product VALUES
+    -> (101, 'iPhone 15', 85000, 10, 1),
+    -> (102, 'Samsung Galaxy S24', 75000, 15, 1),
+    -> (103, 'Redmi Note 13', 25000, 30, 1),
+    -> (104, 'Dell Laptop', 65000, 8, 2),
+    -> (105, 'HP Laptop', 55000, 12, 2),
+    -> (106, 'MacBook Air', 120000, 5, 2),
+    -> (107, 'iPad Air', 70000, 7, 3),
+    -> (108, 'Samsung Tablet', 45000, 10, 3),
+    -> (109, 'USB Keyboard', 1500, 50, 4),
+    -> (110, 'Wireless Mouse', 1200, 60, 4),
+    -> (111, 'Gaming Mouse', 2500, 25, 4),
+    -> (112, 'Dell Monitor', 30000, 10, 5),
+    -> (113, 'Samsung Monitor', 28000, 15, 5),
+    -> (114, 'LG Monitor', 22000, 20, 5),
+    -> (115, 'OnePlus Phone', 40000, 18, 1),
+    -> (116, 'Canon Camera', 90000, 4, NULL);
+Query OK, 16 rows affected (0.01 sec)
+Records: 16  Duplicates: 0  Warnings: 0
+
+mysql> select * from Product ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       10 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  65000.00 |        8 |           2 |
+| 105 | HP Laptop          |  55000.00 |       12 |           2 |
+| 106 | MacBook Air        | 120000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
+| 116 | Canon Camera       |  90000.00 |        4 |        NULL |
++-----+--------------------+-----------+----------+-------------+
+16 rows in set (0.00 sec)
+
+mysql>
+
+mysql> CREATE TABLE Orders (
+    ->     id INT PRIMARY KEY,
+    ->     customer_id INT,
+    ->     product_id INT,
+    ->     order_date DATE,
+    ->     quantity INT,
+    ->     amount DECIMAL(10,2),
+    ->     FOREIGN KEY (customer_id) REFERENCES Customer(id),
+    ->     FOREIGN KEY (product_id) REFERENCES Product(id)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO Orders VALUES
+    -> (1001, 1, 101, '2026-01-05', 1, 85000),
+    -> (1002, 2, 103, '2026-01-08', 2, 50000),
+    -> (1003, 1, 110, '2026-01-10', 2, 2400),
+    -> (1004, 3, 104, '2026-01-12', 1, 65000),
+    -> (1005, 4, 107, '2026-01-15', 1, 70000),
+    -> (1006, 5, 109, '2026-01-18', 3, 4500),
+    -> (1007, 6, 102, '2026-01-20', 1, 75000),
+    -> (1008, 1, 111, '2026-01-22', 2, 5000),
+    -> (1009, 7, 105, '2026-01-25', 1, 55000),
+    -> (1010, 8, 106, '2026-01-28', 1, 120000),
+    -> (1011, 2, 115, '2026-02-02', 1, 40000),
+    -> (1012, 9, 108, '2026-02-05', 1, 45000),
+    -> (1013, 3, 112, '2026-02-08', 1, 30000),
+    -> (1014, 1, 110, '2026-02-10', 5, 6000),
+    -> (1015, 10, 113, '2026-02-12', 2, 56000),
+    -> (1016, 6, 101, '2026-02-15', 1, 85000),
+    -> (1017, 11, 114, '2026-02-18', 1, 22000),
+    -> (1018, 1, 103, '2026-02-20', 1, 25000),
+    -> (1019, 8, 102, '2026-02-22', 1, 75000),
+    -> (1020, 2, 109, '2026-02-25', 4, 6000),
+    -> (1021, 5, 116, '2026-03-01', 1, 90000),
+    -> (1022, 7, 101, '2026-03-05', 1, 85000),
+    -> (1023, 4, 105, '2026-03-10', 2, 110000),
+    -> (1024, 6, 107, '2026-03-15', 1, 70000);
+Query OK, 24 rows affected (0.01 sec)
+Records: 24  Duplicates: 0  Warnings: 0
+
+mysql> select * from Orders ;
++------+-------------+------------+------------+----------+-----------+
+| id   | customer_id | product_id | order_date | quantity | amount    |
++------+-------------+------------+------------+----------+-----------+
+| 1001 |           1 |        101 | 2026-01-05 |        1 |  85000.00 |
+| 1002 |           2 |        103 | 2026-01-08 |        2 |  50000.00 |
+| 1003 |           1 |        110 | 2026-01-10 |        2 |   2400.00 |
+| 1004 |           3 |        104 | 2026-01-12 |        1 |  65000.00 |
+| 1005 |           4 |        107 | 2026-01-15 |        1 |  70000.00 |
+| 1006 |           5 |        109 | 2026-01-18 |        3 |   4500.00 |
+| 1007 |           6 |        102 | 2026-01-20 |        1 |  75000.00 |
+| 1008 |           1 |        111 | 2026-01-22 |        2 |   5000.00 |
+| 1009 |           7 |        105 | 2026-01-25 |        1 |  55000.00 |
+| 1010 |           8 |        106 | 2026-01-28 |        1 | 120000.00 |
+| 1011 |           2 |        115 | 2026-02-02 |        1 |  40000.00 |
+| 1012 |           9 |        108 | 2026-02-05 |        1 |  45000.00 |
+| 1013 |           3 |        112 | 2026-02-08 |        1 |  30000.00 |
+| 1014 |           1 |        110 | 2026-02-10 |        5 |   6000.00 |
+| 1015 |          10 |        113 | 2026-02-12 |        2 |  56000.00 |
+| 1016 |           6 |        101 | 2026-02-15 |        1 |  85000.00 |
+| 1017 |          11 |        114 | 2026-02-18 |        1 |  22000.00 |
+| 1018 |           1 |        103 | 2026-02-20 |        1 |  25000.00 |
+| 1019 |           8 |        102 | 2026-02-22 |        1 |  75000.00 |
+| 1020 |           2 |        109 | 2026-02-25 |        4 |   6000.00 |
+| 1021 |           5 |        116 | 2026-03-01 |        1 |  90000.00 |
+| 1022 |           7 |        101 | 2026-03-05 |        1 |  85000.00 |
+| 1023 |           4 |        105 | 2026-03-10 |        2 | 110000.00 |
+| 1024 |           6 |        107 | 2026-03-15 |        1 |  70000.00 |
++------+-------------+------------+------------+----------+-----------+
+24 rows in set (0.00 sec)
+
+
+
+mysql> show tables ;
++---------------+
+| Tables_in_hp1 |
++---------------+
+| category      |
+| customer      |
+| department    |
+| employee      |
+| orders        |
+| product       |
++---------------+
+6 rows in set (0.01 sec)
+
+mysql> select * from Employee
+    -> ;
++-----+---------+------+----------+-------------------+---------------+
+| id  | name    | age  | salary   | email             | department_id |
++-----+---------+------+----------+-------------------+---------------+
+| 101 | Rahim   |   25 | 45000.00 | rahim@gmail.com   |             1 |
+| 102 | Karim   |   28 | 55000.00 | karim@gmail.com   |             1 |
+| 103 | Sakib   |   30 | 65000.00 | sakib@gmail.com   |             2 |
+| 104 | Nadia   |   24 | 40000.00 | nadia@gmail.com   |             3 |
+| 105 | Mim     |   27 | 70000.00 | mim@gmail.com     |             1 |
+| 106 | Hasan   |   32 | 85000.00 | hasan@gmail.com   |             4 |
+| 107 | Jannat  |   23 | 35000.00 | jannat@gmail.com  |             5 |
+| 108 | Rafi    |   29 | 60000.00 | rafi@gmail.com    |             6 |
+| 109 | Tania   |   26 | 50000.00 | NULL              |             2 |
+| 110 | Arif    |   35 | 90000.00 | arif@gmail.com    |             3 |
+| 111 | Mahin   |   22 | 30000.00 | NULL              |             1 |
+| 112 | Sumaiya |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+| 113 | Ayan    |   27 | 48000.00 | ayan@gmail.com    |          NULL |
++-----+---------+------+----------+-------------------+---------------+
+13 rows in set (0.00 sec)
+
+mysql> select * from Customer ;
++----+--------+------------+------------------+-------------+
+| id | name   | city       | email            | phone       |
++----+--------+------------+------------------+-------------+
+|  1 | Abir   | Dhaka      | abir@gmail.com   | 01711111111 |
+|  2 | Nusrat | Chittagong | nusrat@gmail.com | 01722222222 |
+|  3 | Siam   | Dhaka      | siam@gmail.com   | NULL        |
+|  4 | Mitu   | Rajshahi   | mitu@gmail.com   | 01744444444 |
+|  5 | Riad   | Khulna     | riad@gmail.com   | 01755555555 |
+|  6 | Arafat | Dhaka      | arafat@gmail.com | NULL        |
+|  7 | Tanjim | Sylhet     | tanjim@gmail.com | 01777777777 |
+|  8 | Mahi   | Dhaka      | mahi@gmail.com   | 01788888888 |
+|  9 | Sadia  | Chittagong | sadia@gmail.com  | NULL        |
+| 10 | Fahim  | Barisal    | fahim@gmail.com  | 01710101010 |
+| 11 | Rima   | Dhaka      | rima@gmail.com   | 01712121212 |
+| 12 | Nayeem | Comilla    | nayeem@gmail.com | NULL        |
+| 13 | Ayesha | Dhaka      | ayesha@gmail.com | 01713131313 |
++----+--------+------------+------------------+-------------+
+13 rows in set (0.00 sec)
+
+mysql> select * from Product ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       10 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  65000.00 |        8 |           2 |
+| 105 | HP Laptop          |  55000.00 |       12 |           2 |
+| 106 | MacBook Air        | 120000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
+| 116 | Canon Camera       |  90000.00 |        4 |        NULL |
++-----+--------------------+-----------+----------+-------------+
+16 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> name , salary
+    -> from
+    ->  Employee ;
++---------+----------+
+| name    | salary   |
++---------+----------+
+| Rahim   | 45000.00 |
+| Karim   | 55000.00 |
+| Sakib   | 65000.00 |
+| Nadia   | 40000.00 |
+| Mim     | 70000.00 |
+| Hasan   | 85000.00 |
+| Jannat  | 35000.00 |
+| Rafi    | 60000.00 |
+| Tania   | 50000.00 |
+| Arif    | 90000.00 |
+| Mahin   | 30000.00 |
+| Sumaiya | 75000.00 |
+| Ayan    | 48000.00 |
++---------+----------+
+13 rows in set (0.00 sec)
+
+mysql> select
+    -> name , age , email
+    -> from
+    -> Employee ;
++---------+------+-------------------+
+| name    | age  | email             |
++---------+------+-------------------+
+| Rahim   |   25 | rahim@gmail.com   |
+| Karim   |   28 | karim@gmail.com   |
+| Sakib   |   30 | sakib@gmail.com   |
+| Nadia   |   24 | nadia@gmail.com   |
+| Mim     |   27 | mim@gmail.com     |
+| Hasan   |   32 | hasan@gmail.com   |
+| Jannat  |   23 | jannat@gmail.com  |
+| Rafi    |   29 | rafi@gmail.com    |
+| Tania   |   26 | NULL              |
+| Arif    |   35 | arif@gmail.com    |
+| Mahin   |   22 | NULL              |
+| Sumaiya |   31 | sumaiya@gmail.com |
+| Ayan    |   27 | ayan@gmail.com    |
++---------+------+-------------------+
+13 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> name , price , quantity
+    -> from
+    -> product ;
++--------------------+-----------+----------+
+| name               | price     | quantity |
++--------------------+-----------+----------+
+| iPhone 15          |  85000.00 |       10 |
+| Samsung Galaxy S24 |  75000.00 |       15 |
+| Redmi Note 13      |  25000.00 |       30 |
+| Dell Laptop        |  65000.00 |        8 |
+| HP Laptop          |  55000.00 |       12 |
+| MacBook Air        | 120000.00 |        5 |
+| iPad Air           |  70000.00 |        7 |
+| Samsung Tablet     |  45000.00 |       10 |
+| USB Keyboard       |   1500.00 |       50 |
+| Wireless Mouse     |   1200.00 |       60 |
+| Gaming Mouse       |   2500.00 |       25 |
+| Dell Monitor       |  30000.00 |       10 |
+| Samsung Monitor    |  28000.00 |       15 |
+| LG Monitor         |  22000.00 |       20 |
+| OnePlus Phone      |  40000.00 |       18 |
+| Canon Camera       |  90000.00 |        4 |
++--------------------+-----------+----------+
+16 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> name , city
+    -> from
+    -> customer ;
++--------+------------+
+| name   | city       |
++--------+------------+
+| Abir   | Dhaka      |
+| Nusrat | Chittagong |
+| Siam   | Dhaka      |
+| Mitu   | Rajshahi   |
+| Riad   | Khulna     |
+| Arafat | Dhaka      |
+| Tanjim | Sylhet     |
+| Mahi   | Dhaka      |
+| Sadia  | Chittagong |
+| Fahim  | Barisal    |
+| Rima   | Dhaka      |
+| Nayeem | Comilla    |
+| Ayesha | Dhaka      |
++--------+------------+
+13 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select * from Orders ;
++------+-------------+------------+------------+----------+-----------+
+| id   | customer_id | product_id | order_date | quantity | amount    |
++------+-------------+------------+------------+----------+-----------+
+| 1001 |           1 |        101 | 2026-01-05 |        1 |  85000.00 |
+| 1002 |           2 |        103 | 2026-01-08 |        2 |  50000.00 |
+| 1003 |           1 |        110 | 2026-01-10 |        2 |   2400.00 |
+| 1004 |           3 |        104 | 2026-01-12 |        1 |  65000.00 |
+| 1005 |           4 |        107 | 2026-01-15 |        1 |  70000.00 |
+| 1006 |           5 |        109 | 2026-01-18 |        3 |   4500.00 |
+| 1007 |           6 |        102 | 2026-01-20 |        1 |  75000.00 |
+| 1008 |           1 |        111 | 2026-01-22 |        2 |   5000.00 |
+| 1009 |           7 |        105 | 2026-01-25 |        1 |  55000.00 |
+| 1010 |           8 |        106 | 2026-01-28 |        1 | 120000.00 |
+| 1011 |           2 |        115 | 2026-02-02 |        1 |  40000.00 |
+| 1012 |           9 |        108 | 2026-02-05 |        1 |  45000.00 |
+| 1013 |           3 |        112 | 2026-02-08 |        1 |  30000.00 |
+| 1014 |           1 |        110 | 2026-02-10 |        5 |   6000.00 |
+| 1015 |          10 |        113 | 2026-02-12 |        2 |  56000.00 |
+| 1016 |           6 |        101 | 2026-02-15 |        1 |  85000.00 |
+| 1017 |          11 |        114 | 2026-02-18 |        1 |  22000.00 |
+| 1018 |           1 |        103 | 2026-02-20 |        1 |  25000.00 |
+| 1019 |           8 |        102 | 2026-02-22 |        1 |  75000.00 |
+| 1020 |           2 |        109 | 2026-02-25 |        4 |   6000.00 |
+| 1021 |           5 |        116 | 2026-03-01 |        1 |  90000.00 |
+| 1022 |           7 |        101 | 2026-03-05 |        1 |  85000.00 |
+| 1023 |           4 |        105 | 2026-03-10 |        2 | 110000.00 |
+| 1024 |           6 |        107 | 2026-03-15 |        1 |  70000.00 |
++------+-------------+------------+------------+----------+-----------+
+24 rows in set (0.00 sec)
+mysql> select distinct
+    -> city
+    -> from
+    -> Customer ;
++------------+
+| city       |
++------------+
+| Dhaka      |
+| Chittagong |
+| Rajshahi   |
+| Khulna     |
+| Sylhet     |
+| Barisal    |
+| Comilla    |
++------------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> age
+    -> from
+    -> Employee ;
++------+
+| age  |
++------+
+|   25 |
+|   28 |
+|   30 |
+|   24 |
+|   27 |
+|   32 |
+|   23 |
+|   29 |
+|   26 |
+|   35 |
+|   22 |
+|   31 |
+|   27 |
++------+
+13 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> select distinct
+    -> age
+    -> from
+    -> Employee ;
++------+
+| age  |
++------+
+|   25 |
+|   28 |
+|   30 |
+|   24 |
+|   27 |
+|   32 |
+|   23 |
+|   29 |
+|   26 |
+|   35 |
+|   22 |
+|   31 |
++------+
+12 rows in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> select
+    -> category_id
+    -> from
+    -> product ;
++-------------+
+| category_id |
++-------------+
+|        NULL |
+|           1 |
+|           1 |
+|           1 |
+|           1 |
+|           2 |
+|           2 |
+|           2 |
+|           3 |
+|           3 |
+|           4 |
+|           4 |
+|           4 |
+|           5 |
+|           5 |
+|           5 |
++-------------+
+16 rows in set (0.00 sec)
+
+
+
+mysql> select distinct
+    -> category_id
+    -> from
+    -> product ;
++-------------+
+| category_id |
++-------------+
+|        NULL |
+|           1 |
+|           2 |
+|           3 |
+|           4 |
+|           5 |
++-------------+
+6 rows in set (0.00 sec)
+
+
+
+mysql> select distinct
+    -> price
+    -> from
+    -> product ;
++-----------+
+| price     |
++-----------+
+|  85000.00 |
+|  75000.00 |
+|  25000.00 |
+|  65000.00 |
+|  55000.00 |
+| 120000.00 |
+|  70000.00 |
+|  45000.00 |
+|   1500.00 |
+|   1200.00 |
+|   2500.00 |
+|  30000.00 |
+|  28000.00 |
+|  22000.00 |
+|  40000.00 |
+|  90000.00 |
++-----------+
+16 rows in set (0.00 sec)
+
+mysql>
+mysql> select distinct
+    -> city
+    -> from
+    -> Customer
+    -> order by
+    -> city asc ;
++------------+
+| city       |
++------------+
+| Barisal    |
+| Chittagong |
+| Comilla    |
+| Dhaka      |
+| Khulna     |
+| Rajshahi   |
+| Sylhet     |
++------------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> where
+    -> salary > 50000 ;
++----------+
+| salary   |
++----------+
+| 55000.00 |
+| 65000.00 |
+| 70000.00 |
+| 85000.00 |
+| 60000.00 |
+| 90000.00 |
+| 75000.00 |
++----------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> age
+    -> from
+    -> employee
+    -> where
+    -> age < 30 ;
++------+
+| age  |
++------+
+|   25 |
+|   28 |
+|   24 |
+|   27 |
+|   23 |
+|   29 |
+|   26 |
+|   22 |
+|   27 |
++------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> price
+    -> from
+    -> product
+    -> where
+    -> price > 50000 ;
++-----------+
+| price     |
++-----------+
+|  85000.00 |
+|  75000.00 |
+|  65000.00 |
+|  55000.00 |
+| 120000.00 |
+|  70000.00 |
+|  90000.00 |
++-----------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> quantity
+    -> from
+    -> product
+    -> where
+    -> quantity < 10 ;
++----------+
+| quantity |
++----------+
+|        8 |
+|        5 |
+|        7 |
+|        4 |
++----------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> city
+    -> from
+    -> customer
+    -> where
+    -> city = 'Dhaka' ;
++-------+
+| city  |
++-------+
+| Dhaka |
+| Dhaka |
+| Dhaka |
+| Dhaka |
+| Dhaka |
+| Dhaka |
++-------+
+6 rows in set (0.00 sec)
+
+mysql> select
+    -> amount
+    -> from
+    -> order
+    -> where
+    -> amount > 50000 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order
+where
+amount > 50000' at line 4
+mysql> select
+    -> amount
+    -> from
+    ->  Orders
+    -> where
+    ->  amount > 50000 ;
++-----------+
+| amount    |
++-----------+
+|  85000.00 |
+|  65000.00 |
+|  70000.00 |
+|  75000.00 |
+|  55000.00 |
+| 120000.00 |
+|  56000.00 |
+|  85000.00 |
+|  75000.00 |
+|  90000.00 |
+|  85000.00 |
+| 110000.00 |
+|  70000.00 |
++-----------+
+13 rows in set (0.00 sec)
+
+mysql> select
+    -> id
+    -> from
+    -> employee
+    -> where
+    -> id = 1 ;
+Empty set (0.00 sec)
+
+mysql> select
+    -> id
+    -> from
+    -> employee
+    ->  where
+    -> id < 1 ;
+Empty set (0.00 sec)
+
+mysql> select
+    -> id
+    -> from
+    -> employee
+    -> where
+    -> department_id = 1;
++-----+
+| id  |
++-----+
+| 101 |
+| 102 |
+| 105 |
+| 111 |
++-----+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> id
+    -> from
+    -> category
+    -> from
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from' at line 5
+mysql> select
+    -> id
+    -> from
+    -> category
+    -> where
+    -> id = 2 ;
++----+
+| id |
++----+
+|  2 |
++----+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> order by
+    -> salary asc ;
++----------+
+| salary   |
++----------+
+| 30000.00 |
+| 35000.00 |
+| 40000.00 |
+| 45000.00 |
+| 48000.00 |
+| 50000.00 |
+| 55000.00 |
+| 60000.00 |
+| 65000.00 |
+| 70000.00 |
+| 75000.00 |
+| 85000.00 |
+| 90000.00 |
++----------+
+13 rows in set (0.00 sec)
+
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> order by
+    -> salary desc ;
++----------+
+| salary   |
++----------+
+| 90000.00 |
+| 85000.00 |
+| 75000.00 |
+| 70000.00 |
+| 65000.00 |
+| 60000.00 |
+| 55000.00 |
+| 50000.00 |
+| 48000.00 |
+| 45000.00 |
+| 40000.00 |
+| 35000.00 |
+| 30000.00 |
++----------+
+13 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select
+    -> salary
+    -> from
+    -> Employee
+    -> order by salary desc ;
++----------+
+| salary   |
++----------+
+| 90000.00 |
+| 85000.00 |
+| 75000.00 |
+| 70000.00 |
+| 65000.00 |
+| 60000.00 |
+| 55000.00 |
+| 50000.00 |
+| 48000.00 |
+| 45000.00 |
+| 40000.00 |
+| 35000.00 |
+| 30000.00 |
++----------+
+13 rows in set (0.00 sec)
+
+mysql> select
+    -> price
+    -> from
+    -> Product
+    -> order by
+    -> price desc ;
++-----------+
+| price     |
++-----------+
+| 120000.00 |
+|  90000.00 |
+|  85000.00 |
+|  75000.00 |
+|  70000.00 |
+|  65000.00 |
+|  55000.00 |
+|  45000.00 |
+|  40000.00 |
+|  30000.00 |
+|  28000.00 |
+|  25000.00 |
+|  22000.00 |
+|   2500.00 |
+|   1500.00 |
+|   1200.00 |
++-----------+
+16 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> price
+    -> from
+    -> Product
+    -> order by
+    -> price desc ;
++-----------+
+| price     |
++-----------+
+| 120000.00 |
+|  90000.00 |
+|  85000.00 |
+|  75000.00 |
+|  70000.00 |
+|  65000.00 |
+|  55000.00 |
+|  45000.00 |
+|  40000.00 |
+|  30000.00 |
+|  28000.00 |
+|  25000.00 |
+|  22000.00 |
+|   2500.00 |
+|   1500.00 |
+|   1200.00 |
++-----------+
+16 rows in set (0.00 sec)
+
+mysql> select
+    -> city
+    -> from
+    -> Customer
+    -> order by
+    -> city asc ;
++------------+
+| city       |
++------------+
+| Barisal    |
+| Chittagong |
+| Chittagong |
+| Comilla    |
+| Dhaka      |
+| Dhaka      |
+| Dhaka      |
+| Dhaka      |
+| Dhaka      |
+| Dhaka      |
+| Khulna     |
+| Rajshahi   |
+| Sylhet     |
++------------+
+13 rows in set (0.00 sec)
+
+mysql> select
+    -> amount
+    -> from
+    -> Orders
+    -> order by
+    -> amount desc ;
++-----------+
+| amount    |
++-----------+
+| 120000.00 |
+| 110000.00 |
+|  90000.00 |
+|  85000.00 |
+|  85000.00 |
+|  85000.00 |
+|  75000.00 |
+|  75000.00 |
+|  70000.00 |
+|  70000.00 |
+|  65000.00 |
+|  56000.00 |
+|  55000.00 |
+|  50000.00 |
+|  45000.00 |
+|  40000.00 |
+|  30000.00 |
+|  25000.00 |
+|  22000.00 |
+|   6000.00 |
+|   6000.00 |
+|   5000.00 |
+|   4500.00 |
+|   2400.00 |
++-----------+
+24 rows in set (0.00 sec)
+
+mysql> select
+    -> age
+    -> from
+    -> Employee
+    -> order by
+    -> age asc ;
++------+
+| age  |
++------+
+|   22 |
+|   23 |
+|   24 |
+|   25 |
+|   26 |
+|   27 |
+|   27 |
+|   28 |
+|   29 |
+|   30 |
+|   31 |
+|   32 |
+|   35 |
++------+
+13 rows in set (0.00 sec)
+
+mysql> select
+    -> quantity
+    -> from
+    ->  Product
+    -> order by
+    -> quantity asc ;
++----------+
+| quantity |
++----------+
+|        4 |
+|        5 |
+|        7 |
+|        8 |
+|       10 |
+|       10 |
+|       10 |
+|       12 |
+|       15 |
+|       15 |
+|       18 |
+|       20 |
+|       25 |
+|       30 |
+|       50 |
+|       60 |
++----------+
+16 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> where
+    -> salary > 50000 and age < 30 ;
++----------+
+| salary   |
++----------+
+| 55000.00 |
+| 70000.00 |
+| 60000.00 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> where
+    -> salary > 40000 and department_id = 1 ;
++----------+
+| salary   |
++----------+
+| 45000.00 |
+| 55000.00 |
+| 70000.00 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> select
+    -> price
+    -> from
+    -> Product
+    -> where
+    -> price > 20000 and  quantity = 10 ;
++----------+
+| price    |
++----------+
+| 85000.00 |
+| 45000.00 |
+| 30000.00 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> select
+    -> city
+    -> from
+    -> Customer
+    -> where
+    -> city = 'Dhaka' and phone ;
++-------+
+| city  |
++-------+
+| Dhaka |
+| Dhaka |
+| Dhaka |
+| Dhaka |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> salary
+    -> from
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> select
+    -> age
+    -> from
+    -> employee
+    -> where
+    -> age > 25 and salary > 60000 ;
++------+
+| age  |
++------+
+|   30 |
+|   27 |
+|   32 |
+|   35 |
+|   31 |
++------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select
+    -> department_id
+    -> from
+    -> employee
+    -> where
+    -> department_id = 1 or department_id = 2 ;
++---------------+
+| department_id |
++---------------+
+|             1 |
+|             1 |
+|             1 |
+|             1 |
+|             2 |
+|             2 |
++---------------+
+6 rows in set (0.00 sec)
+
+mysql> select
+    -> city
+    -> from
+    -> customer
+    -> where
+    -> city = 'Dhaka' or city = 'Chittagong' ;
++------------+
+| city       |
++------------+
+| Dhaka      |
+| Chittagong |
+| Dhaka      |
+| Dhaka      |
+| Dhaka      |
+| Chittagong |
+| Dhaka      |
+| Dhaka      |
++------------+
+8 rows in set (0.00 sec)
+
+mysql> select
+    -> quantity
+    -> from
+    -> Product
+    -> where
+    -> ^C
+mysql>
+mysql>
+mysql> select
+    -> category_id
+    -> from
+    -> product
+    -> where
+    -> category_id = 1 or category_id = 2 ;
++-------------+
+| category_id |
++-------------+
+|           1 |
+|           1 |
+|           1 |
+|           1 |
+|           2 |
+|           2 |
+|           2 |
++-------------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> where
+    -> salary < 40000 or salary > 80000 ;
++----------+
+| salary   |
++----------+
+| 85000.00 |
+| 35000.00 |
+| 90000.00 |
+| 30000.00 |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> city
+    -> from
+    -> customer
+    -> where
+    -> city = 'Rajshahi' or city = 'Khulna' ;
++----------+
+| city     |
++----------+
+| Rajshahi |
+| Khulna   |
++----------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> department_id
+    -> from
+    -> employee
+    -> where not
+    -> department_id = 1 ;
++---------------+
+| department_id |
++---------------+
+|             2 |
+|             2 |
+|             3 |
+|             3 |
+|             4 |
+|             4 |
+|             5 |
+|             6 |
++---------------+
+8 rows in set (0.00 sec)
+
+mysql> select
+    -> city from
+    -> customer
+    -> where not
+    -> city = 'Dhaka' ;
++------------+
+| city       |
++------------+
+| Chittagong |
+| Rajshahi   |
+| Khulna     |
+| Sylhet     |
+| Chittagong |
+| Barisal    |
+| Comilla    |
++------------+
+7 rows in set (0.00 sec)
+
+mysql> select
+    -> category_id
+    -> from
+    -> product
+    -> where not
+    -> category_id = 4 ;
++-------------+
+| category_id |
++-------------+
+|           1 |
+|           1 |
+|           1 |
+|           1 |
+|           2 |
+|           2 |
+|           2 |
+|           3 |
+|           3 |
+|           5 |
+|           5 |
+|           5 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select
+    -> salary
+    -> from
+    ->  employee
+    -> where not
+    -> salary = 50000 ;
++----------+
+| salary   |
++----------+
+| 45000.00 |
+| 55000.00 |
+| 65000.00 |
+| 40000.00 |
+| 70000.00 |
+| 85000.00 |
+| 35000.00 |
+| 60000.00 |
+| 90000.00 |
+| 30000.00 |
+| 75000.00 |
+| 48000.00 |
++----------+
+12 rows in set (0.00 sec)
+
+mysql> select
+    ->  city
+    -> from
+    -> Customer
+    -> where not
+    -> city = 'Chittagong' ;
++----------+
+| city     |
++----------+
+| Dhaka    |
+| Dhaka    |
+| Rajshahi |
+| Khulna   |
+| Dhaka    |
+| Sylhet   |
+| Dhaka    |
+| Barisal  |
+| Dhaka    |
+| Comilla  |
+| Dhaka    |
++----------+
+11 rows in set (0.00 sec)
+
+mysql>
+
+mysql> INSERT INTO employee (id, name, age, salary, email, department_id)
+    -> VALUES (114, 'Rahim Khan', 28, 45000, 'rahim@example.com', 6) ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee ;
++-----+------------+------+----------+-------------------+---------------+
+| id  | name       | age  | salary   | email             | department_id |
++-----+------------+------+----------+-------------------+---------------+
+| 101 | Rahim      |   25 | 45000.00 | rahim@gmail.com   |             1 |
+| 102 | Karim      |   28 | 55000.00 | karim@gmail.com   |             1 |
+| 103 | Sakib      |   30 | 65000.00 | sakib@gmail.com   |             2 |
+| 104 | Nadia      |   24 | 40000.00 | nadia@gmail.com   |             3 |
+| 105 | Mim        |   27 | 70000.00 | mim@gmail.com     |             1 |
+| 106 | Hasan      |   32 | 85000.00 | hasan@gmail.com   |             4 |
+| 107 | Jannat     |   23 | 35000.00 | jannat@gmail.com  |             5 |
+| 108 | Rafi       |   29 | 60000.00 | rafi@gmail.com    |             6 |
+| 109 | Tania      |   26 | 50000.00 | NULL              |             2 |
+| 110 | Arif       |   35 | 90000.00 | arif@gmail.com    |             3 |
+| 111 | Mahin      |   22 | 30000.00 | NULL              |             1 |
+| 112 | Sumaiya    |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+| 113 | Ayan       |   27 | 48000.00 | ayan@gmail.com    |          NULL |
+| 114 | Rahim Khan |   28 | 45000.00 | rahim@example.com |             6 |
++-----+------------+------+----------+-------------------+---------------+
+14 rows in set (0.00 sec)
+
+
+mysql>  insert into customer (id, name, city, email, phone)
+    -> values
+    -> (14, 'john doe', 'dhaka', 'john@email.com', '01711111111') ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from  customer ;
++----+----------+------------+------------------+-------------+
+| id | name     | city       | email            | phone       |
++----+----------+------------+------------------+-------------+
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 |
+|  2 | Nusrat   | Chittagong | nusrat@gmail.com | 01722222222 |
+|  3 | Siam     | Dhaka      | siam@gmail.com   | NULL        |
+|  4 | Mitu     | Rajshahi   | mitu@gmail.com   | 01744444444 |
+|  5 | Riad     | Khulna     | riad@gmail.com   | 01755555555 |
+|  6 | Arafat   | Dhaka      | arafat@gmail.com | NULL        |
+|  7 | Tanjim   | Sylhet     | tanjim@gmail.com | 01777777777 |
+|  8 | Mahi     | Dhaka      | mahi@gmail.com   | 01788888888 |
+|  9 | Sadia    | Chittagong | sadia@gmail.com  | NULL        |
+| 10 | Fahim    | Barisal    | fahim@gmail.com  | 01710101010 |
+| 11 | Rima     | Dhaka      | rima@gmail.com   | 01712121212 |
+| 12 | Nayeem   | Comilla    | nayeem@gmail.com | NULL        |
+| 13 | Ayesha   | Dhaka      | ayesha@gmail.com | 01713131313 |
+| 14 | john doe | dhaka      | john@email.com   | 01711111111 |
++----+----------+------------+------------------+-------------+
+14 rows in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> insert into product (id, name, price, quantity, category_id)
+    -> values
+    ->  (117, 'laptop', 50000, 10, 1) ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from product ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       10 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  65000.00 |        8 |           2 |
+| 105 | HP Laptop          |  55000.00 |       12 |           2 |
+| 106 | MacBook Air        | 120000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
+| 116 | Canon Camera       |  90000.00 |        4 |        NULL |
+| 117 | laptop             |  50000.00 |       10 |           1 |
++-----+--------------------+-----------+----------+-------------+
+17 rows in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> insert into category (id, name) values (7, 'electronics');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from category ;
++----+-------------+
+| id | name        |
++----+-------------+
+|  4 | Accessories |
+|  6 | Camera      |
+|  7 | electronics |
+|  2 | Laptop      |
+|  1 | Mobile      |
+|  5 | Monitor     |
+|  3 | Tablet      |
++----+-------------+
+7 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> insert into department (id, name, location)
+    -> values
+    -> (8, 'sales', 'dhaka');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from department ;
++----+-----------+------------+
+| id | name      | location   |
++----+-----------+------------+
+|  1 | IT        | Dhaka      |
+|  2 | HR        | Dhaka      |
+|  3 | Finance   | Chittagong |
+|  4 | Marketing | Rajshahi   |
+|  5 | Sales     | Khulna     |
+|  6 | Research  | Sylhet     |
+|  7 | Training  | Barisal    |
+|  8 | sales     | dhaka      |
++----+-----------+------------+
+8 rows in set (0.00 sec)
+
+mysql>
+
+mysql> insert into orders (id, customer_id, product_id, order_date, quantity, amount)
+    -> values (1025, 1, 101, '2026-08-10', 2, 100000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from orders ;
++------+-------------+------------+------------+----------+-----------+
+| id   | customer_id | product_id | order_date | quantity | amount    |
++------+-------------+------------+------------+----------+-----------+
+| 1001 |           1 |        101 | 2026-01-05 |        1 |  85000.00 |
+| 1002 |           2 |        103 | 2026-01-08 |        2 |  50000.00 |
+| 1003 |           1 |        110 | 2026-01-10 |        2 |   2400.00 |
+| 1004 |           3 |        104 | 2026-01-12 |        1 |  65000.00 |
+| 1005 |           4 |        107 | 2026-01-15 |        1 |  70000.00 |
+| 1006 |           5 |        109 | 2026-01-18 |        3 |   4500.00 |
+| 1007 |           6 |        102 | 2026-01-20 |        1 |  75000.00 |
+| 1008 |           1 |        111 | 2026-01-22 |        2 |   5000.00 |
+| 1009 |           7 |        105 | 2026-01-25 |        1 |  55000.00 |
+| 1010 |           8 |        106 | 2026-01-28 |        1 | 120000.00 |
+| 1011 |           2 |        115 | 2026-02-02 |        1 |  40000.00 |
+| 1012 |           9 |        108 | 2026-02-05 |        1 |  45000.00 |
+| 1013 |           3 |        112 | 2026-02-08 |        1 |  30000.00 |
+| 1014 |           1 |        110 | 2026-02-10 |        5 |   6000.00 |
+| 1015 |          10 |        113 | 2026-02-12 |        2 |  56000.00 |
+| 1016 |           6 |        101 | 2026-02-15 |        1 |  85000.00 |
+| 1017 |          11 |        114 | 2026-02-18 |        1 |  22000.00 |
+| 1018 |           1 |        103 | 2026-02-20 |        1 |  25000.00 |
+| 1019 |           8 |        102 | 2026-02-22 |        1 |  75000.00 |
+| 1020 |           2 |        109 | 2026-02-25 |        4 |   6000.00 |
+| 1021 |           5 |        116 | 2026-03-01 |        1 |  90000.00 |
+| 1022 |           7 |        101 | 2026-03-05 |        1 |  85000.00 |
+| 1023 |           4 |        105 | 2026-03-10 |        2 | 110000.00 |
+| 1024 |           6 |        107 | 2026-03-15 |        1 |  70000.00 |
+| 1025 |           1 |        101 | 2026-08-10 |        2 | 100000.00 |
++------+-------------+------------+------------+----------+-----------+
+25 rows in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> select
+    -> email
+    -> from
+    -> employee
+    -> where
+    -> email is null ;
++-------+
+| email |
++-------+
+| NULL  |
+| NULL  |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select
+    -> phone
+    -> from
+    -> customer
+    -> where
+    -> phone is null ;
++-------+
+| phone |
++-------+
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select
+    -> department_id
+    -> from
+    -> employee
+    -> where
+    -> department_id is null ;
++---------------+
+| department_id |
++---------------+
+|          NULL |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> category_id
+    -> from
+    -> product
+    -> where
+    -> category_id is null ;
++-------------+
+| category_id |
++-------------+
+|        NULL |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> phone
+    -> from
+    -> customer
+    -> whre
+    -> ;
++-------------+
+| phone       |
++-------------+
+| 01711111111 |
+| 01722222222 |
+| NULL        |
+| 01744444444 |
+| 01755555555 |
+| NULL        |
+| 01777777777 |
+| 01788888888 |
+| NULL        |
+| 01710101010 |
+| 01712121212 |
+| NULL        |
+| 01713131313 |
+| 01711111111 |
++-------------+
+14 rows in set (0.00 sec)
+
+mysql> select
+    -> phine
+    -> ;
+ERROR 1054 (42S22): Unknown column 'phine' in 'field list'
+mysql> select phone
+    -> from
+    -> customer
+    -> where
+    -> phone is null ;
++-------+
+| phone |
++-------+
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
++-------+
+4 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> select
+    -> phone
+    -> from
+    -> customer
+    -> where
+    -> phone is not null ;
++-------------+
+| phone       |
++-------------+
+| 01711111111 |
+| 01722222222 |
+| 01744444444 |
+| 01755555555 |
+| 01777777777 |
+| 01788888888 |
+| 01710101010 |
+| 01712121212 |
+| 01713131313 |
+| 01711111111 |
++-------------+
+10 rows in set (0.00 sec)
+
+mysql> select
+    -> email
+    -> from
+    -> employee
+    -> where
+    -> email is not null ;
++-------------------+
+| email             |
++-------------------+
+| arif@gmail.com    |
+| ayan@gmail.com    |
+| hasan@gmail.com   |
+| jannat@gmail.com  |
+| karim@gmail.com   |
+| mim@gmail.com     |
+| nadia@gmail.com   |
+| rafi@gmail.com    |
+| rahim@example.com |
+| rahim@gmail.com   |
+| sakib@gmail.com   |
+| sumaiya@gmail.com |
++-------------------+
+12 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> update
+    -> Employee
+    -> set
+    -> salary = 50000
+    -> where
+    -> name = 'Rahim' ;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee ;
++-----+------------+------+----------+-------------------+---------------+
+| id  | name       | age  | salary   | email             | department_id |
++-----+------------+------+----------+-------------------+---------------+
+| 101 | Rahim      |   25 | 50000.00 | rahim@gmail.com   |             1 |
+| 102 | Karim      |   28 | 55000.00 | karim@gmail.com   |             1 |
+| 103 | Sakib      |   30 | 65000.00 | sakib@gmail.com   |             2 |
+| 104 | Nadia      |   24 | 40000.00 | nadia@gmail.com   |             3 |
+| 105 | Mim        |   27 | 70000.00 | mim@gmail.com     |             1 |
+| 106 | Hasan      |   32 | 85000.00 | hasan@gmail.com   |             4 |
+| 107 | Jannat     |   23 | 35000.00 | jannat@gmail.com  |             5 |
+| 108 | Rafi       |   29 | 60000.00 | rafi@gmail.com    |             6 |
+| 109 | Tania      |   26 | 50000.00 | NULL              |             2 |
+| 110 | Arif       |   35 | 90000.00 | arif@gmail.com    |             3 |
+| 111 | Mahin      |   22 | 30000.00 | NULL              |             1 |
+| 112 | Sumaiya    |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+| 113 | Ayan       |   27 | 48000.00 | ayan@gmail.com    |          NULL |
+| 114 | Rahim Khan |   28 | 45000.00 | rahim@example.com |             6 |
++-----+------------+------+----------+-------------------+---------------+
+14 rows in set (0.00 sec)
+
+mysql>
+
+mysql> update 
+       employee 
+	   set 
+	   salary = salary + 5000 
+	   where 
+	   department_id = 1;
+Query OK, 4 rows affected (0.01 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select * from
+    -> employee ;
++-----+------------+------+----------+-------------------+---------------+
+| id  | name       | age  | salary   | email             | department_id |
++-----+------------+------+----------+-------------------+---------------+
+| 101 | Rahim      |   25 | 55000.00 | rahim@gmail.com   |             1 |
+| 102 | Karim      |   28 | 60000.00 | karim@gmail.com   |             1 |
+| 103 | Sakib      |   30 | 65000.00 | sakib@gmail.com   |             2 |
+| 104 | Nadia      |   24 | 40000.00 | nadia@gmail.com   |             3 |
+| 105 | Mim        |   27 | 75000.00 | mim@gmail.com     |             1 |
+| 106 | Hasan      |   32 | 85000.00 | hasan@gmail.com   |             4 |
+| 107 | Jannat     |   23 | 35000.00 | jannat@gmail.com  |             5 |
+| 108 | Rafi       |   29 | 60000.00 | rafi@gmail.com    |             6 |
+| 109 | Tania      |   26 | 50000.00 | NULL              |             2 |
+| 110 | Arif       |   35 | 90000.00 | arif@gmail.com    |             3 |
+| 111 | Mahin      |   22 | 35000.00 | NULL              |             1 |
+| 112 | Sumaiya    |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+| 113 | Ayan       |   27 | 48000.00 | ayan@gmail.com    |          NULL |
+| 114 | Rahim Khan |   28 | 45000.00 | rahim@example.com |             6 |
++-----+------------+------+----------+-------------------+---------------+
+14 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> update
+    -> Customer
+    -> set
+    -> name = 'Abir'
+    -> where
+    ->  city = 'Chittagong' ;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from
+    -> customer ;
++----+----------+------------+------------------+-------------+
+| id | name     | city       | email            | phone       |
++----+----------+------------+------------------+-------------+
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 |
+|  2 | Abir     | Chittagong | nusrat@gmail.com | 01722222222 |
+|  3 | Siam     | Dhaka      | siam@gmail.com   | NULL        |
+|  4 | Mitu     | Rajshahi   | mitu@gmail.com   | 01744444444 |
+|  5 | Riad     | Khulna     | riad@gmail.com   | 01755555555 |
+|  6 | Arafat   | Dhaka      | arafat@gmail.com | NULL        |
+|  7 | Tanjim   | Sylhet     | tanjim@gmail.com | 01777777777 |
+|  8 | Mahi     | Dhaka      | mahi@gmail.com   | 01788888888 |
+|  9 | Abir     | Chittagong | sadia@gmail.com  | NULL        |
+| 10 | Fahim    | Barisal    | fahim@gmail.com  | 01710101010 |
+| 11 | Rima     | Dhaka      | rima@gmail.com   | 01712121212 |
+| 12 | Nayeem   | Comilla    | nayeem@gmail.com | NULL        |
+| 13 | Ayesha   | Dhaka      | ayesha@gmail.com | 01713131313 |
+| 14 | john doe | dhaka      | john@email.com   | 01711111111 |
++----+----------+------------+------------------+-------------+
+14 rows in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> update
+    -> product
+    -> set
+    -> price = price * 1.10
+    -> where
+    -> category_id = 2 ;
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from product ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       10 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  71500.00 |        8 |           2 |
+| 105 | HP Laptop          |  60500.00 |       12 |           2 |
+| 106 | MacBook Air        | 132000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
+| 116 | Canon Camera       |  90000.00 |        4 |        NULL |
+| 117 | laptop             |  50000.00 |       10 |           1 |
++-----+--------------------+-----------+----------+-------------+
+17 rows in set (0.00 sec)
+
+
+
+
+
+mysql> update product set quantity = 20 where id = 101;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from
+    -> product  ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       20 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  71500.00 |        8 |           2 |
+| 105 | HP Laptop          |  60500.00 |       12 |           2 |
+| 106 | MacBook Air        | 132000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
+| 116 | Canon Camera       |  90000.00 |        4 |        NULL |
+| 117 | laptop             |  50000.00 |       10 |           1 |
++-----+--------------------+-----------+----------+-------------+
+17 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> update
+    -> Employee
+    -> set
+    -> email = 'Mahin@gmail.com'
+    ->
+    -> where
+    -> name = 'Mahin' ;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee ;
++-----+------------+------+----------+-------------------+---------------+
+| id  | name       | age  | salary   | email             | department_id |
++-----+------------+------+----------+-------------------+---------------+
+| 101 | Rahim      |   25 | 55000.00 | rahim@gmail.com   |             1 |
+| 102 | Karim      |   28 | 60000.00 | karim@gmail.com   |             1 |
+| 103 | Sakib      |   30 | 65000.00 | sakib@gmail.com   |             2 |
+| 104 | Nadia      |   24 | 40000.00 | nadia@gmail.com   |             3 |
+| 105 | Mim        |   27 | 75000.00 | mim@gmail.com     |             1 |
+| 106 | Hasan      |   32 | 85000.00 | hasan@gmail.com   |             4 |
+| 107 | Jannat     |   23 | 35000.00 | jannat@gmail.com  |             5 |
+| 108 | Rafi       |   29 | 60000.00 | rafi@gmail.com    |             6 |
+| 109 | Tania      |   26 | 50000.00 | NULL              |             2 |
+| 110 | Arif       |   35 | 90000.00 | arif@gmail.com    |             3 |
+| 111 | Mahin      |   22 | 35000.00 | Mahin@gmail.com   |             1 |
+| 112 | Sumaiya    |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+| 113 | Ayan       |   27 | 48000.00 | ayan@gmail.com    |          NULL |
+| 114 | Rahim Khan |   28 | 45000.00 | rahim@example.com |             6 |
++-----+------------+------+----------+-------------------+---------------+
+14 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> delete from
+    -> orders
+    -> where
+    -> product_id = 116 ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> delete from
+    -> product
+    -> where
+    -> name = 'Canon Camera' ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from product ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       20 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  71500.00 |        8 |           2 |
+| 105 | HP Laptop          |  60500.00 |       12 |           2 |
+| 106 | MacBook Air        | 132000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
+| 117 | laptop             |  50000.00 |       10 |           1 |
++-----+--------------------+-----------+----------+-------------+
+16 rows in set (0.00 sec)
+
+mysql>
+mysql> delete from
+    -> employee
+    -> where
+    -> id = 113 ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee ;
++-----+------------+------+----------+-------------------+---------------+
+| id  | name       | age  | salary   | email             | department_id |
++-----+------------+------+----------+-------------------+---------------+
+| 101 | Rahim      |   25 | 55000.00 | rahim@gmail.com   |             1 |
+| 102 | Karim      |   28 | 60000.00 | karim@gmail.com   |             1 |
+| 103 | Sakib      |   30 | 65000.00 | sakib@gmail.com   |             2 |
+| 104 | Nadia      |   24 | 40000.00 | nadia@gmail.com   |             3 |
+| 105 | Mim        |   27 | 75000.00 | mim@gmail.com     |             1 |
+| 106 | Hasan      |   32 | 85000.00 | hasan@gmail.com   |             4 |
+| 107 | Jannat     |   23 | 35000.00 | jannat@gmail.com  |             5 |
+| 108 | Rafi       |   29 | 60000.00 | rafi@gmail.com    |             6 |
+| 109 | Tania      |   26 | 50000.00 | NULL              |             2 |
+| 110 | Arif       |   35 | 90000.00 | arif@gmail.com    |             3 |
+| 111 | Mahin      |   22 | 35000.00 | Mahin@gmail.com   |             1 |
+| 112 | Sumaiya    |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+| 114 | Rahim Khan |   28 | 45000.00 | rahim@example.com |             6 |
++-----+------------+------+----------+-------------------+---------------+
+13 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> where
+    -> salary = 75000.00
+    -> limit 2  ;
++----------+
+| salary   |
++----------+
+| 75000.00 |
+| 75000.00 |
++----------+
+2 rows in set (0.00 sec)
+
+mysql> select
+    -> salary
+    -> from
+    -> employee
+    -> where
+    -> salary > 75000.00
+    -> limit 2 ;
++----------+
+| salary   |
++----------+
+| 85000.00 |
+| 90000.00 |
++----------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> sum(id)
+    -> from
+    -> employee
+    -> where
+    ->  id = 101 ;
++---------+
+| sum(id) |
++---------+
+|     101 |
++---------+
+1 row in set (0.00 sec)
+
+
+ SELECT COUNT(id) FROM employee WHERE id = 101
+    -> ;
++-----------+
+| COUNT(id) |
++-----------+
+|         1 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select
+    -> count(id)
+    -> from  employee ;
++-----------+
+| count(id) |
++-----------+
+|        13 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> count(id)
+    -> as
+    -> 'Total Customer'
+    -> from
+    -> customer ;
++----------------+
+| Total Customer |
++----------------+
+|             14 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select
+    -> count(id)
+    -> as
+    -> 'Total'
+    -> from
+    -> product ;
++-------+
+| Total |
++-------+
+|    16 |
++-------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> count(amount)
+    -> as
+    -> 'Total salaes amount'
+    -> from
+    ->  orders  ;
++---------------------+
+| Total salaes amount |
++---------------------+
+|                  24 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> sum(amount)
+    -> as
+    -> 'Total salaes amount'
+    -> from
+    -> orders  ;
++---------------------+
+| Total salaes amount |
++---------------------+
+|          1286900.00 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select
+    -> min(salary)
+    -> as
+    -> 'Minimum salary'
+    -> from
+    -> employee ;
++----------------+
+| Minimum salary |
++----------------+
+|       35000.00 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> max(price)
+    -> as
+    -> 'Maximun Price'
+    -> from
+    -> product ;
++---------------+
+| Maximun Price |
++---------------+
+|     132000.00 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select
+    -> avg(amount)
+    -> as
+    -> 'Average amount'
+    -> from
+    -> orders ;
++----------------+
+| Average amount |
++----------------+
+|   53620.833333 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select * from customer
+    -> where id in (1, 3, 5, 7);
++----+--------+--------+------------------+-------------+
+| id | name   | city   | email            | phone       |
++----+--------+--------+------------------+-------------+
+|  1 | Abir   | Dhaka  | abir@gmail.com   | 01711111111 |
+|  3 | Siam   | Dhaka  | siam@gmail.com   | NULL        |
+|  5 | Riad   | Khulna | riad@gmail.com   | 01755555555 |
+|  7 | Tanjim | Sylhet | tanjim@gmail.com | 01777777777 |
++----+--------+--------+------------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from customer
+    -> where city not in ('dhaka', 'chittagong');
++----+--------+----------+------------------+-------------+
+| id | name   | city     | email            | phone       |
++----+--------+----------+------------------+-------------+
+|  4 | Mitu   | Rajshahi | mitu@gmail.com   | 01744444444 |
+|  5 | Riad   | Khulna   | riad@gmail.com   | 01755555555 |
+|  7 | Tanjim | Sylhet   | tanjim@gmail.com | 01777777777 |
+| 10 | Fahim  | Barisal  | fahim@gmail.com  | 01710101010 |
+| 12 | Nayeem | Comilla  | nayeem@gmail.com | NULL        |
++----+--------+----------+------------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> select
+    -> customer.id , customer.name  , customer.city     , customer.email
+    -> from
+    -> customer
+    -> inner join
+    -> orders
+    -> on
+    -> customer.id  = orders.customer_id ;
++----+--------+------------+------------------+
+| id | name   | city       | email            |
++----+--------+------------+------------------+
+|  1 | Abir   | Dhaka      | abir@gmail.com   |
+|  1 | Abir   | Dhaka      | abir@gmail.com   |
+|  1 | Abir   | Dhaka      | abir@gmail.com   |
+|  1 | Abir   | Dhaka      | abir@gmail.com   |
+|  1 | Abir   | Dhaka      | abir@gmail.com   |
+|  1 | Abir   | Dhaka      | abir@gmail.com   |
+|  2 | Abir   | Chittagong | nusrat@gmail.com |
+|  2 | Abir   | Chittagong | nusrat@gmail.com |
+|  2 | Abir   | Chittagong | nusrat@gmail.com |
+|  3 | Siam   | Dhaka      | siam@gmail.com   |
+|  3 | Siam   | Dhaka      | siam@gmail.com   |
+|  4 | Mitu   | Rajshahi   | mitu@gmail.com   |
+|  4 | Mitu   | Rajshahi   | mitu@gmail.com   |
+|  5 | Riad   | Khulna     | riad@gmail.com   |
+|  6 | Arafat | Dhaka      | arafat@gmail.com |
+|  6 | Arafat | Dhaka      | arafat@gmail.com |
+|  6 | Arafat | Dhaka      | arafat@gmail.com |
+|  7 | Tanjim | Sylhet     | tanjim@gmail.com |
+|  7 | Tanjim | Sylhet     | tanjim@gmail.com |
+|  8 | Mahi   | Dhaka      | mahi@gmail.com   |
+|  8 | Mahi   | Dhaka      | mahi@gmail.com   |
+|  9 | Abir   | Chittagong | sadia@gmail.com  |
+| 10 | Fahim  | Barisal    | fahim@gmail.com  |
+| 11 | Rima   | Dhaka      | rima@gmail.com   |
++----+--------+------------+------------------+
+24 rows in set (0.00 sec)
+
+mysql> select
+    -> customer.id , customer.name  , customer.city     , customer.email
+    -> from
+    ->  customer
+    -> inner join
+    -> orders
+    -> on
+    -> customer.id  = orders.customer_id
+    -> limit 1 ;
++----+------+-------+----------------+
+| id | name | city  | email          |
++----+------+-------+----------------+
+|  1 | Abir | Dhaka | abir@gmail.com |
++----+------+-------+----------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select distinct customer.*
+    -> from customer
+    -> join orders on customer.id = orders.customer_id;
++----+--------+------------+------------------+-------------+
+| id | name   | city       | email            | phone       |
++----+--------+------------+------------------+-------------+
+|  1 | Abir   | Dhaka      | abir@gmail.com   | 01711111111 |
+|  2 | Abir   | Chittagong | nusrat@gmail.com | 01722222222 |
+|  3 | Siam   | Dhaka      | siam@gmail.com   | NULL        |
+|  4 | Mitu   | Rajshahi   | mitu@gmail.com   | 01744444444 |
+|  5 | Riad   | Khulna     | riad@gmail.com   | 01755555555 |
+|  6 | Arafat | Dhaka      | arafat@gmail.com | NULL        |
+|  7 | Tanjim | Sylhet     | tanjim@gmail.com | 01777777777 |
+|  8 | Mahi   | Dhaka      | mahi@gmail.com   | 01788888888 |
+|  9 | Abir   | Chittagong | sadia@gmail.com  | NULL        |
+| 10 | Fahim  | Barisal    | fahim@gmail.com  | 01710101010 |
+| 11 | Rima   | Dhaka      | rima@gmail.com   | 01712121212 |
++----+--------+------------+------------------+-------------+
+11 rows in set (0.01 sec)
+
+mysql>
+mysql> select
+    -> product.id,product.name, product.price, product.quantity, product.category_id
+    -> from
+    ->  product
+    -> inner join
+    -> orders
+    -> on
+    -> product.id = orders.product_id ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       20 |           1 |
+| 101 | iPhone 15          |  85000.00 |       20 |           1 |
+| 101 | iPhone 15          |  85000.00 |       20 |           1 |
+| 101 | iPhone 15          |  85000.00 |       20 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  71500.00 |        8 |           2 |
+| 105 | HP Laptop          |  60500.00 |       12 |           2 |
+| 105 | HP Laptop          |  60500.00 |       12 |           2 |
+| 106 | MacBook Air        | 132000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
++-----+--------------------+-----------+----------+-------------+
+24 rows in set (0.00 sec)
+
+
+mysql> select distinct
+    ->  product.id,product.name, product.price, product.quantity, product.category_id
+    -> from
+    -> product
+    -> inner join
+    -> orders
+    -> on
+    ->  product.id = orders.product_id ;
++-----+--------------------+-----------+----------+-------------+
+| id  | name               | price     | quantity | category_id |
++-----+--------------------+-----------+----------+-------------+
+| 101 | iPhone 15          |  85000.00 |       20 |           1 |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 |
+| 104 | Dell Laptop        |  71500.00 |        8 |           2 |
+| 105 | HP Laptop          |  60500.00 |       12 |           2 |
+| 106 | MacBook Air        | 132000.00 |        5 |           2 |
+| 107 | iPad Air           |  70000.00 |        7 |           3 |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 |
++-----+--------------------+-----------+----------+-------------+
+15 rows in set (0.00 sec)
+
+
+
+
+mysql> select department.*, employee.*
+    -> from department
+    -> left join employee on department.id = employee.department_id;
++----+-----------+------------+------+------------+------+----------+-------------------+---------------+
+| id | name      | location   | id   | name       | age  | salary   | email             | department_id |
++----+-----------+------------+------+------------+------+----------+-------------------+---------------+
+|  1 | IT        | Dhaka      |  101 | Rahim      |   25 | 55000.00 | rahim@gmail.com   |             1 |
+|  1 | IT        | Dhaka      |  102 | Karim      |   28 | 60000.00 | karim@gmail.com   |             1 |
+|  1 | IT        | Dhaka      |  105 | Mim        |   27 | 75000.00 | mim@gmail.com     |             1 |
+|  1 | IT        | Dhaka      |  111 | Mahin      |   22 | 35000.00 | Mahin@gmail.com   |             1 |
+|  2 | HR        | Dhaka      |  103 | Sakib      |   30 | 65000.00 | sakib@gmail.com   |             2 |
+|  2 | HR        | Dhaka      |  109 | Tania      |   26 | 50000.00 | NULL              |             2 |
+|  3 | Finance   | Chittagong |  104 | Nadia      |   24 | 40000.00 | nadia@gmail.com   |             3 |
+|  3 | Finance   | Chittagong |  110 | Arif       |   35 | 90000.00 | arif@gmail.com    |             3 |
+|  4 | Marketing | Rajshahi   |  106 | Hasan      |   32 | 85000.00 | hasan@gmail.com   |             4 |
+|  4 | Marketing | Rajshahi   |  112 | Sumaiya    |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+|  5 | Sales     | Khulna     |  107 | Jannat     |   23 | 35000.00 | jannat@gmail.com  |             5 |
+|  6 | Research  | Sylhet     |  108 | Rafi       |   29 | 60000.00 | rafi@gmail.com    |             6 |
+|  6 | Research  | Sylhet     |  114 | Rahim Khan |   28 | 45000.00 | rahim@example.com |             6 |
+|  8 | sales     | dhaka      | NULL | NULL       | NULL |     NULL | NULL              |          NULL |
++----+-----------+------------+------+------------+------+----------+-------------------+---------------+
+14 rows in set (0.00 sec)
+
+mysql> select customer.*, orders.*
+    -> from customer
+    -> left join orders on customer.id = orders.customer_id;
++----+----------+------------+------------------+-------------+------+-------------+------------+------------+----------+-----------+
+| id | name     | city       | email            | phone       | id   | customer_id | product_id | order_date | quantity | amount    |
++----+----------+------------+------------------+-------------+------+-------------+------------+------------+----------+-----------+
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 | 1001 |           1 |        101 | 2026-01-05 |        1 |  85000.00 |
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 | 1003 |           1 |        110 | 2026-01-10 |        2 |   2400.00 |
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 | 1008 |           1 |        111 | 2026-01-22 |        2 |   5000.00 |
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 | 1014 |           1 |        110 | 2026-02-10 |        5 |   6000.00 |
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 | 1018 |           1 |        103 | 2026-02-20 |        1 |  25000.00 |
+|  1 | Abir     | Dhaka      | abir@gmail.com   | 01711111111 | 1025 |           1 |        101 | 2026-08-10 |        2 | 100000.00 |
+|  2 | Abir     | Chittagong | nusrat@gmail.com | 01722222222 | 1002 |           2 |        103 | 2026-01-08 |        2 |  50000.00 |
+|  2 | Abir     | Chittagong | nusrat@gmail.com | 01722222222 | 1011 |           2 |        115 | 2026-02-02 |        1 |  40000.00 |
+|  2 | Abir     | Chittagong | nusrat@gmail.com | 01722222222 | 1020 |           2 |        109 | 2026-02-25 |        4 |   6000.00 |
+|  3 | Siam     | Dhaka      | siam@gmail.com   | NULL        | 1004 |           3 |        104 | 2026-01-12 |        1 |  65000.00 |
+|  3 | Siam     | Dhaka      | siam@gmail.com   | NULL        | 1013 |           3 |        112 | 2026-02-08 |        1 |  30000.00 |
+|  4 | Mitu     | Rajshahi   | mitu@gmail.com   | 01744444444 | 1005 |           4 |        107 | 2026-01-15 |        1 |  70000.00 |
+|  4 | Mitu     | Rajshahi   | mitu@gmail.com   | 01744444444 | 1023 |           4 |        105 | 2026-03-10 |        2 | 110000.00 |
+|  5 | Riad     | Khulna     | riad@gmail.com   | 01755555555 | 1006 |           5 |        109 | 2026-01-18 |        3 |   4500.00 |
+|  6 | Arafat   | Dhaka      | arafat@gmail.com | NULL        | 1007 |           6 |        102 | 2026-01-20 |        1 |  75000.00 |
+|  6 | Arafat   | Dhaka      | arafat@gmail.com | NULL        | 1016 |           6 |        101 | 2026-02-15 |        1 |  85000.00 |
+|  6 | Arafat   | Dhaka      | arafat@gmail.com | NULL        | 1024 |           6 |        107 | 2026-03-15 |        1 |  70000.00 |
+|  7 | Tanjim   | Sylhet     | tanjim@gmail.com | 01777777777 | 1009 |           7 |        105 | 2026-01-25 |        1 |  55000.00 |
+|  7 | Tanjim   | Sylhet     | tanjim@gmail.com | 01777777777 | 1022 |           7 |        101 | 2026-03-05 |        1 |  85000.00 |
+|  8 | Mahi     | Dhaka      | mahi@gmail.com   | 01788888888 | 1010 |           8 |        106 | 2026-01-28 |        1 | 120000.00 |
+|  8 | Mahi     | Dhaka      | mahi@gmail.com   | 01788888888 | 1019 |           8 |        102 | 2026-02-22 |        1 |  75000.00 |
+|  9 | Abir     | Chittagong | sadia@gmail.com  | NULL        | 1012 |           9 |        108 | 2026-02-05 |        1 |  45000.00 |
+| 10 | Fahim    | Barisal    | fahim@gmail.com  | 01710101010 | 1015 |          10 |        113 | 2026-02-12 |        2 |  56000.00 |
+| 11 | Rima     | Dhaka      | rima@gmail.com   | 01712121212 | 1017 |          11 |        114 | 2026-02-18 |        1 |  22000.00 |
+| 12 | Nayeem   | Comilla    | nayeem@gmail.com | NULL        | NULL |        NULL |       NULL | NULL       |     NULL |      NULL |
+| 13 | Ayesha   | Dhaka      | ayesha@gmail.com | 01713131313 | NULL |        NULL |       NULL | NULL       |     NULL |      NULL |
+| 14 | john doe | dhaka      | john@email.com   | 01711111111 | NULL |        NULL |       NULL | NULL       |     NULL |      NULL |
++----+----------+------------+------------------+-------------+------+-------------+------------+------------+----------+-----------+
+27 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+mysql> select product.*, category.name as category_name
+    -> from product
+    -> left join category on product.category_id = category.id;
++-----+--------------------+-----------+----------+-------------+---------------+
+| id  | name               | price     | quantity | category_id | category_name |
++-----+--------------------+-----------+----------+-------------+---------------+
+| 101 | iPhone 15          |  85000.00 |       20 |           1 | Mobile        |
+| 102 | Samsung Galaxy S24 |  75000.00 |       15 |           1 | Mobile        |
+| 103 | Redmi Note 13      |  25000.00 |       30 |           1 | Mobile        |
+| 104 | Dell Laptop        |  71500.00 |        8 |           2 | Laptop        |
+| 105 | HP Laptop          |  60500.00 |       12 |           2 | Laptop        |
+| 106 | MacBook Air        | 132000.00 |        5 |           2 | Laptop        |
+| 107 | iPad Air           |  70000.00 |        7 |           3 | Tablet        |
+| 108 | Samsung Tablet     |  45000.00 |       10 |           3 | Tablet        |
+| 109 | USB Keyboard       |   1500.00 |       50 |           4 | Accessories   |
+| 110 | Wireless Mouse     |   1200.00 |       60 |           4 | Accessories   |
+| 111 | Gaming Mouse       |   2500.00 |       25 |           4 | Accessories   |
+| 112 | Dell Monitor       |  30000.00 |       10 |           5 | Monitor       |
+| 113 | Samsung Monitor    |  28000.00 |       15 |           5 | Monitor       |
+| 114 | LG Monitor         |  22000.00 |       20 |           5 | Monitor       |
+| 115 | OnePlus Phone      |  40000.00 |       18 |           1 | Mobile        |
+| 117 | laptop             |  50000.00 |       10 |           1 | Mobile        |
++-----+--------------------+-----------+----------+-------------+---------------+
+16 rows in set (0.02 sec)
+
+mysql>
+
+
+
+
+mysql> select department.*, employee.*
+    -> from department
+    -> left join employee on department.id = employee.department_id;
++----+-----------+------------+------+------------+------+----------+-------------------+---------------+
+| id | name      | location   | id   | name       | age  | salary   | email             | department_id |
++----+-----------+------------+------+------------+------+----------+-------------------+---------------+
+|  1 | IT        | Dhaka      |  101 | Rahim      |   25 | 55000.00 | rahim@gmail.com   |             1 |
+|  1 | IT        | Dhaka      |  102 | Karim      |   28 | 60000.00 | karim@gmail.com   |             1 |
+|  1 | IT        | Dhaka      |  105 | Mim        |   27 | 75000.00 | mim@gmail.com     |             1 |
+|  1 | IT        | Dhaka      |  111 | Mahin      |   22 | 35000.00 | Mahin@gmail.com   |             1 |
+|  2 | HR        | Dhaka      |  103 | Sakib      |   30 | 65000.00 | sakib@gmail.com   |             2 |
+|  2 | HR        | Dhaka      |  109 | Tania      |   26 | 50000.00 | NULL              |             2 |
+|  3 | Finance   | Chittagong |  104 | Nadia      |   24 | 40000.00 | nadia@gmail.com   |             3 |
+|  3 | Finance   | Chittagong |  110 | Arif       |   35 | 90000.00 | arif@gmail.com    |             3 |
+|  4 | Marketing | Rajshahi   |  106 | Hasan      |   32 | 85000.00 | hasan@gmail.com   |             4 |
+|  4 | Marketing | Rajshahi   |  112 | Sumaiya    |   31 | 75000.00 | sumaiya@gmail.com |             4 |
+|  5 | Sales     | Khulna     |  107 | Jannat     |   23 | 35000.00 | jannat@gmail.com  |             5 |
+|  6 | Research  | Sylhet     |  108 | Rafi       |   29 | 60000.00 | rafi@gmail.com    |             6 |
+|  6 | Research  | Sylhet     |  114 | Rahim Khan |   28 | 45000.00 | rahim@example.com |             6 |
+|  8 | sales     | dhaka      | NULL | NULL       | NULL |     NULL | NULL              |          NULL |
++----+-----------+------------+------+------------+------+----------+-------------------+---------------+
+14 rows in set (0.00 sec)
+
+mysql> select department_id, count(*) as employee_count
+    -> from employee
+    -> group by department_id;
++---------------+----------------+
+| department_id | employee_count |
++---------------+----------------+
+|             1 |              4 |
+|             2 |              2 |
+|             3 |              2 |
+|             4 |              2 |
+|             5 |              1 |
+|             6 |              2 |
++---------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select department_id, avg(salary) as average_salary
+    -> from employee
+    -> group by department_id;
++---------------+----------------+
+| department_id | average_salary |
++---------------+----------------+
+|             1 |   56250.000000 |
+|             2 |   57500.000000 |
+|             3 |   65000.000000 |
+|             4 |   80000.000000 |
+|             5 |   35000.000000 |
+|             6 |   52500.000000 |
++---------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql>
