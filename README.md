@@ -10,8 +10,6 @@
 </div>
 
 
-[![Contributors][contributors-shield]][contributors-url]
-
 ---
 
 ## 📋 Table of Contents
